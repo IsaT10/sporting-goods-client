@@ -4,18 +4,21 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
-import AboutUs from './pages/AboutUs';
+import AboutUs from './pages/AboutUs/AboutUs';
 import Layout from './components/layout/Layout';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
+import 'swiper/css';
+import ManageProducts from './pages/ManageProducts/ManageProducts';
 
 export default function App() {
   return (
-    <div>
+    <div className='text-primary'>
       <Router>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path='about-us' element={<AboutUs />} />
+            <Route path='manage-products' element={<ManageProducts />} />
             <Route path='*' element={<Navigate to='/' />} />
           </Route>
         </Routes>
