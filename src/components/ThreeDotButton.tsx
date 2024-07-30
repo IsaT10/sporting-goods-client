@@ -12,14 +12,24 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from './ui/button';
 import { MoreHorizontal } from 'lucide-react';
 
-export default function ThreeDotButton({ handleDeleteProduct }) {
+import EditProductModal from './EditProductModal';
+import { TProduct } from '@/interface';
+
+type TThreeDotButtonProps = {
+  handleDeleteProduct: () => void;
+  product: TProduct;
+};
+
+export default function ThreeDotButton({
+  handleDeleteProduct,
+  product,
+}: TThreeDotButtonProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -30,7 +40,7 @@ export default function ThreeDotButton({ handleDeleteProduct }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-        <DropdownMenuItem className='cursor-pointer'>Edit </DropdownMenuItem>
+        <EditProductModal product={product} />
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <button className='flex items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-stone-100 transition-colors focus:bg-accent focus:text-accent-foreground cursor-pointer data-[disabled]:opacity-50 w-full'>

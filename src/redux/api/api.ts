@@ -6,10 +6,19 @@ export const baseApi = createApi({
   tagTypes: ['product'],
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: (priority) => {
+      query: (query) => {
         const params = new URLSearchParams();
-        if (priority) {
-          params.append('priority', priority);
+        if (query.searchTerm) {
+          params.append('searchTerm', query.searchTerm);
+        }
+        if (query.category && query.category !== 'all') {
+          params.append('category', query.category);
+        }
+        if (query.page) {
+          params.append('page', query.page);
+        }
+        if (query.sort) {
+          params.append('sort', query.sort);
         }
 
         return { url: '/products', method: 'GET', params };
@@ -18,7 +27,7 @@ export const baseApi = createApi({
     }),
     addProduct: builder.mutation({
       query: (data) => ({
-        url: '/task',
+        url: '/products/add-product',
         method: 'POST',
         body: data,
       }),
@@ -26,8 +35,8 @@ export const baseApi = createApi({
     }),
     updateProduct: builder.mutation({
       query: (options) => ({
-        url: `/task/${options.id}`,
-        method: 'PUT',
+        url: `/products/${options.id}`,
+        method: 'PATCH',
         body: options.data,
       }),
       invalidatesTags: ['product'],
