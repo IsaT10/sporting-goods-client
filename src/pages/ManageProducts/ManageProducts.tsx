@@ -60,7 +60,7 @@ export default function ManageProducts() {
           <div className='flex flex-col gap-5 md:w-[30%] lg:w-[25%] items-end'>
             <Input
               value={searchTerm}
-              type='email'
+              type='text'
               placeholder='Search by name...'
               onChange={(e) => setSearchTerm(e.target.value)}
               className=''
@@ -94,7 +94,8 @@ export default function ManageProducts() {
           </>
         )}
 
-        {products?.data?.products?.length < 10 ? null : (
+        {products?.data?.products?.length < 10 &&
+        currentPage !== totalPages ? null : (
           <PaginationProducts
             currentPage={currentPage}
             totalPages={totalPages}

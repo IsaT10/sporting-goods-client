@@ -8,15 +8,24 @@ export const baseApi = createApi({
     getProducts: builder.query({
       query: (query) => {
         const params = new URLSearchParams();
+
         if (query.searchTerm) {
           params.append('searchTerm', query.searchTerm);
         }
         if (query.category && query.category !== 'all') {
           params.append('category', query.category);
         }
+
+        if (query.brand && query.brand !== 'all') {
+          params.append('brand', query.brand);
+        }
         if (query.page) {
           params.append('page', query.page);
         }
+        if (query.rating && query.rating !== 'all') {
+          params.append('rating', query.rating);
+        }
+
         if (query.sort) {
           params.append('sort', query.sort);
         }

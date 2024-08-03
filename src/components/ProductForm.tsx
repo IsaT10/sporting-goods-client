@@ -307,7 +307,7 @@ export function ProductForm({ isUpdate, product, setOpen }: TProductFormProps) {
         const data = {
           ...values,
           price: parseFloat(values.price),
-          rating: 4.5,
+          rating: 4,
           stock: parseInt(values.stock, 10),
         };
 
