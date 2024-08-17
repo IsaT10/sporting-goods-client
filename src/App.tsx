@@ -10,6 +10,9 @@ import Home from './pages/Home/Home';
 import 'swiper/css';
 import ManageProducts from './pages/ManageProducts/ManageProducts';
 import AllProducts from './pages/AllProducts/AllProducts';
+import ProductDetails from './pages/ProductDetails/ProductDetails';
+import Cart from './pages/Cart/Cart';
+import Checkout from './pages/Checkout/Checkout';
 
 export default function App() {
   return (
@@ -20,6 +23,9 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path='about-us' element={<AboutUs />} />
             <Route path='all-products' element={<AllProducts />} />
+            <Route path='checkout' element={<Checkout />} />
+            <Route path='cart' element={<Cart />} />
+            <Route path='product/:id' element={<ProductDetails />} />
             <Route path='manage-products' element={<ManageProducts />} />
             <Route path='*' element={<Navigate to='/' />} />
           </Route>

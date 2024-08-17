@@ -1,5 +1,6 @@
 import { TProduct } from '@/interface';
 import img from '../assets/images/saif71-com-IHYoOsWkufQ-unsplash.jpg';
+import { Link } from 'react-router-dom';
 
 export default function ProductCard({ product }: { product: TProduct }) {
   return (
@@ -26,9 +27,11 @@ export default function ProductCard({ product }: { product: TProduct }) {
           </div>
           <p className='text-xl font-bold'>${product.price}</p>
           <div className='absolute bottom-6  right-6 opacity-0 duration-300 group-hover:opacity-100 transition-opacity'>
-            <button className='bg-stone-900 rounded-full px-5 py-2 text-white text-sm font-semibold'>
-              Make an order
-            </button>
+            <Link to={`/product/${product._id}`}>
+              <button className='bg-stone-900 rounded-full px-5 py-2 text-white text-sm font-semibold'>
+                Make an order
+              </button>
+            </Link>
           </div>
         </div>
       </div>

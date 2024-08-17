@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { NavClose, NavOpen } from '../Icons';
+import { Cart, NavClose, NavOpen } from '../Icons';
 import { Button } from '../ui/button';
 import Container from '../Container';
+import { useAppSelector } from '@/redux/hooks';
 
 const navItems = [
   { to: '/about-us', label: 'About Us' },
@@ -15,6 +16,8 @@ const Nav = () => {
   const [prevScrollY, setPrevScrollY] = useState(0);
   const [navVisible, setNavVisible] = useState(true);
   const [nav, setNav] = useState(false);
+
+  const cart = useAppSelector((state) => state.cart);
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
@@ -41,7 +44,7 @@ const Nav = () => {
   };
   return (
     <nav
-      className={`transition-all duration-300 fixed left-0 bg-stone-50 right-0 z-50 py-3 md:py-6 ${
+      className={`transition-all duration-300 fixed left-0 bg-stone-200 right-0 z-50 py-3 md:py-5 ${
         scrollY >= 300 ? 'shadow-md ' : ''
       } ${navVisible ? 'top-0' : '-top-full'}`}
     >
@@ -66,8 +69,12 @@ const Nav = () => {
                 <li>{item.label}</li>
               </NavLink>
             ))}
-            <Link to='/register'>
-              <Button>Register</Button>
+
+            <Link to='/cart' className='relative py-2.5'>
+              <Cart />
+              <span className='absolute top-0 -right-3 bg-orange-500 rounded-full py-[3px] px-2 text-xs font-semibold text-white'>
+                {cart?.items?.length}
+              </span>
             </Link>
           </ul>
 

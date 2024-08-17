@@ -30,7 +30,9 @@ export const baseApi = createApi({
           params.append('sort', query.sort);
         }
 
-        return { url: '/products', method: 'GET', params };
+        const url = query.id ? `/products/${query.id}` : '/products';
+
+        return { url, method: 'GET', params };
       },
       providesTags: ['product'],
     }),

@@ -21,7 +21,11 @@ export default function FormInputFiled({
           <FormControl>
             <div className='space-y-1.5'>
               {isUpdate && <Label htmlFor={name}>{placeholder}</Label>}
-              <Input placeholder={placeholder} {...field} />
+              <Input
+                className='py-6 outline-none border-stone-300'
+                placeholder={placeholder}
+                {...field}
+              />
             </div>
           </FormControl>
 
