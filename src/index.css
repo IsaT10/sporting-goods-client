@@ -2,6 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+::selection {
+  background-color: #001f33;
+  color: #fff;
+}
+
+/* @font-face {
+  font-family: 'Regular';
+  font-weight: 400;
+  src: local('Gilroy-Regular'), url(.) format('truetype');
+}
+
+@font-face {
+  font-family: 'Bold';
+  font-weight: 700;
+  src: local('Gilroy-Bold'), url(.) format('truetype');
+}
+
+@font-face {
+  font-family: 'ExtraBold';
+  font-weight: 800;
+  src: local('Gilroy-ExtraBold'), url(.) format('truetype');
+}
+
+@font-face {
+  font-family: 'Medium';
+  font-weight: 500;
+  src: local('Gilroy-Medium'), url() format('truetype');
+} */
+
+@font-face {
+  font-family: 'Normal';
+  font-weight: 600;
+  src: local('Helvetica-Normal'),
+    url(./assets/fonts/Helvetica.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'SemiBold';
+  font-weight: 600;
+  src: local('Helvetica-SemiBold'),
+    url(./assets/fonts/helvetica-rounded-bold-5871d05ead8de.otf)
+      format('truetype');
+}
+@font-face {
+  font-family: 'Bold';
+  font-weight: 700;
+  src: local('Helvetica-Bold'),
+    url(./assets/fonts/Helvetica-Rounded-Bold.otf) format('truetype');
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

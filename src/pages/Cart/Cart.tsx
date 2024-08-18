@@ -33,7 +33,7 @@ const Cart = () => {
                 <CartItem key={item.id} item={item} />
               ))}
             </div>
-            <div className='md:w-[370px] 900:w-[400px]  lg  bg-white p-5 shadow-l h-max mt-20 md:mt-9 lg:mt-3 border border-stone-300 rounded-lg'>
+            <div className='md:w-[370px] 900:w-[400px] bg-white p-5 shadow-l h-max mt-20 md:mt-9 lg:mt-3 border border-stone-300 rounded-lg'>
               <div className='text-xs md:text-sm'>
                 <h3 className='text-lg md:text-2xl font-semibold mb-3'>
                   Cart totals

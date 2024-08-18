@@ -1,14 +1,19 @@
-import Container from '@/components/Container';
 import Hero from './sections/Hero';
-import AllProducts from './sections/AllProducts';
+import AllProducts from './sections/LatestProducts';
 import Categories from './sections/Categories';
+import Testimonial from './sections/Testimonial';
+import FAQ from './sections/FAQ';
+import Contact from './sections/Contact';
 
 export default function Home() {
   return (
-    <Container>
+    <>
       <Hero />
       <AllProducts />
       <Categories />
-    </Container>
+      <Testimonial />
+      {/* <FAQ /> */}
+      <Contact />
+    </>
   );
 }

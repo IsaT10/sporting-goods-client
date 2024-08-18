@@ -2,7 +2,7 @@ import Container from '@/components/Container';
 import { Link } from 'react-router-dom';
 import ContactUs from './sections/ContactUs';
 import Map from './sections/Map';
-import img from '../../assets/images/saif71-com-IHYoOsWkufQ-unsplash.jpg';
+import img from '../../assets/images/badminton-1.jpg';
 import teamMember1 from '../../assets/images/download (3).jpeg';
 import teamMember2 from '../../assets/images/download (4).jpeg';
 import teamMember3 from '../../assets/images/download (5).jpeg';

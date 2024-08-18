@@ -22,6 +22,9 @@ export const baseApi = createApi({
         if (query.page) {
           params.append('page', query.page);
         }
+        if (query.limit) {
+          params.append('limit', query.limit);
+        }
         if (query.rating && query.rating !== 'all') {
           params.append('rating', query.rating);
         }

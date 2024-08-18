@@ -96,7 +96,7 @@ export default function CartItem({ item }) {
   };
 
   return (
-    <div className='flex py-10 lg:py-3 border-b border-b-stone-300 gap-5 items-start'>
+    <div className='flex py-10 lg:py-5 border-b border-b-stone-300 gap-5 items-start'>
       {/* <div className='flex gap-6 items-center'>
         <img className='w-32 h-28 object-cover' src={item.image} alt='' />
         <div className='flex flex-col gap-2'>

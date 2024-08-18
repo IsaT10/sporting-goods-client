@@ -1,5 +1,5 @@
 import { TProduct } from '@/interface';
-import img from '../assets/images/saif71-com-IHYoOsWkufQ-unsplash.jpg';
+import img from '../assets/images/badminton-1.jpg';
 import { Link } from 'react-router-dom';
 
 export default function ProductCard({ product }: { product: TProduct }) {

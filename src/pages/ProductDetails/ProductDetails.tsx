@@ -1,6 +1,6 @@
 import Container from '@/components/Container';
 import { useGetProductsQuery } from '@/redux/api/api';
-import img from '../../assets/images/saif71-com-IHYoOsWkufQ-unsplash.jpg';
+import img from '../../assets/images/badminton-1.jpg';
 import { useParams } from 'react-router-dom';
 import { Minus, Plus, Spinner } from '@/components/Icons';
 import { Button } from '@/components/ui/button';

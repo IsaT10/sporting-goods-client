@@ -1,28 +1,46 @@
+import Container from '@/components/Container';
+import { Spinner } from '@/components/Icons';
+import ProductCard from '@/components/ProductCard';
+import SectionTitle from '@/components/SectionTitle';
+import { TProduct } from '@/interface';
 import { useGetProductsQuery } from '@/redux/api/api';
-import React from 'react';
 
-export default function AllProducts() {
-  // const [data, setData] = React.useState([]);
+export default function LatestProducts() {
+  const {
+    data: products,
+    isLoading,
+    error,
+  } = useGetProductsQuery({ limit: 3, sort: '-createdAt' });
 
-  // React.useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch('http://localhost:3000/api/v1/products');
-  //       const jsonData = await response.json();
-  //       setData(jsonData);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
+  if (isLoading)
+    return (
+      <div className='h-[70vh] flex justify-center items-center'>
+        <Spinner className='h-10 w-10' />
+      </div>
+    );
 
-  //   fetchData();
-  // }, []);
+  if (error)
+    return (
+      <div className='h-[70vh] flex justify-center items-center text-red-600 font-semibold text-2xl'>
+        Unable to load data. Please check your internet connection and try
+        again.
+      </div>
+    );
 
-  // console.log(data);
-
-  const { data, error, isLoading } = useGetProductsQuery('');
-  console.log(data);
-
-  if (isLoading) return <p>loading...</p>;
-  return <div>AllProducts</div>;
+  console.log(products?.data?.products);
+  return (
+    <Container>
+      <div className=''>
+        <SectionTitle
+          title='New Arrivals'
+          subTitle='Stay updated with our newest arrivals. Discover the freshest gear and latest trends to elevate your performance and style.'
+        />
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 lg:gap-8 gap-y-12 '>
+          {products?.data?.products?.map((el: TProduct, idx: number) => (
+            <ProductCard key={idx} product={el} />
+          ))}
+        </div>
+      </div>
+    </Container>
+  );
 }
