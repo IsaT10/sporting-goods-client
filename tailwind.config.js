@@ -35,10 +35,21 @@ module.exports = {
         // 400: '400px',
       },
       colors: {
+        deepBlue: '#1E3A8A',
+        vibrantGreen: '#10B981',
+        white: '#FFFFFF',
+        darkGray: '#374151',
+        lightGray: '#F3F4F6',
+        brightOrange: '#FF4500',
+        yellowGold: '#F59E0B',
+        offWhite: '#F9FAFB',
+        lightBlue: '#E0F2FE',
+        darkBlue: '#1E40AF',
+        coolGray: '#6B7280',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
+
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',

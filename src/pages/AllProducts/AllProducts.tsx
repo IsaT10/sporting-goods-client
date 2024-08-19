@@ -43,11 +43,10 @@ export default function AllProducts() {
     }
   }, [categoryParam]);
 
-  const handleCategoryChange = (value) => {
+  const handleCategoryChange = (value: string) => {
     handleFilterChange('category', value);
-    const params = new URLSearchParams(location.search);
-    params.set('category', value);
-    navigate(`${location.pathname}?${params.toString()}`);
+    queryParams.set('category', value);
+    navigate(`${location.pathname}?${queryParams.toString()}`);
   };
 
   // const {
@@ -97,7 +96,7 @@ export default function AllProducts() {
 
   if (error)
     return (
-      <div className='h-[calc(100vh-150px)] flex justify-center items-center text-red-600 font-semibold text-2xl'>
+      <div className='h-[calc(100vh-150px)] flex justify-center items-center text-red-600 font-semibold text-center sm:text-xl md:text-2xl'>
         Unable to load data. Please check your internet connection and try
         again.
       </div>

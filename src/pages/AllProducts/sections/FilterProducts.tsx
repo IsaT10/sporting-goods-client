@@ -19,7 +19,7 @@ type TFiltersProps = {
   byPrice: string;
   setByPrice: React.Dispatch<React.SetStateAction<string>>;
   category: string;
-  setCategory: React.Dispatch<React.SetStateAction<string>>;
+  setCategory: (value: string) => void;
   brand: string;
   setBrand: React.Dispatch<React.SetStateAction<string>>;
   byRating: string;
@@ -40,12 +40,16 @@ export default function FilterProducts({
   setByRating,
   handleResetAll,
 }: TFiltersProps) {
+  const handleResetAllFilters = () => {
+    setCategory('all');
+    handleResetAll();
+  };
   return (
     <div className='space-y-6'>
       <div>
         <div className='flex justify-between border-b border-stone-300 pb-4'>
           <h2 className='font-bold  text-xl mb-4'>Filter By</h2>
-          <Button onClick={handleResetAll} variant='outline'>
+          <Button onClick={handleResetAllFilters} variant='outline'>
             Reset all
           </Button>
         </div>

@@ -12,13 +12,15 @@ import {
 } from '@/components/ui/form';
 import { Textarea } from './ui/textarea';
 import FormInputFiled from './FormInputFiled';
+import { toast } from './ui/use-toast';
 
 const contactSchema = z.object({
-  name: z.string({ required_error: 'Name is required' }),
+  name: z.string().min(1, 'Name is required!'),
   email: z
-    .string({ required_error: 'Name is required' })
+    .string()
+    .min(1, 'Email is required!')
     .email({ message: 'Invalid email address' }),
-  message: z.string({ required_error: 'Message is required' }),
+  message: z.string().min(1, 'Message is required!'),
 });
 
 const defaultValues = {
@@ -45,7 +47,16 @@ export function ContactForm() {
   function onSubmit(values: z.infer<typeof contactSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    setTimeout(() => {
+      // Show a success toast after the delay
+      toast({
+        title: 'Success',
+        description: 'Form submit succesfully',
+        variant: 'default',
+      });
+    }, 1000);
+
+    form.reset();
   }
 
   return (
@@ -71,7 +82,12 @@ export function ContactForm() {
             </FormItem>
           )}
         />
-        <Button type='submit'>Submit</Button>
+        <Button
+          type='submit'
+          className='bg-brightOrange  hover:bg-brightOrange/90'
+        >
+          Submit
+        </Button>
       </form>
     </Form>
   );

@@ -4,6 +4,7 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
+import 'react-photo-view/dist/react-photo-view.css';
 import AboutUs from './pages/AboutUs/AboutUs';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home/Home';
@@ -16,7 +17,7 @@ import Checkout from './pages/Checkout/Checkout';
 
 export default function App() {
   return (
-    <div className='text-primary'>
+    <div className='bg bg-offWhite'>
       <Router>
         <Routes>
           <Route path='/' element={<Layout />}>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Cart, NavClose, NavOpen } from '../Icons';
 import { Button } from '../ui/button';
 import Container from '../Container';
@@ -16,14 +16,16 @@ const Nav = () => {
   const [prevScrollY, setPrevScrollY] = useState(0);
   const [navVisible, setNavVisible] = useState(true);
   const [nav, setNav] = useState(false);
+  const location = useLocation();
 
   const cart = useAppSelector((state) => state.cart);
 
+  const scrollThreshold = window.innerWidth < 768 ? 150 : 300;
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
     setScrollY(currentScrollY);
 
-    if (currentScrollY > 300 && currentScrollY > prevScrollY) {
+    if (currentScrollY > scrollThreshold && currentScrollY > prevScrollY) {
       setNavVisible(false); // Hide nav on scroll down
     } else {
       setNavVisible(true); // Show nav on scroll up
@@ -44,25 +46,31 @@ const Nav = () => {
   };
   return (
     <nav
-      className={`transition-all duration-300 fixed left-0 bg-stone-200 right-0 z-50 py-3 md:py-5 ${
-        scrollY >= 300 ? 'shadow-md ' : ''
+      className={`transition-all duration-300 ${
+        location.pathname === '/' ? 'bg-transparent' : 'bg-white shadow-md'
+      } fixed left-0 bg- right-0 z-50 py-3 md:py-5 ${
+        scrollY >= scrollThreshold ? 'shadow-md bg-white' : ''
       } ${navVisible ? 'top-0' : '-top-full'}`}
     >
       <Container>
         <div className='flex justify-between items-center'>
           <Link to='/' className='flex items-center gap-3'>
-            <h2 className='md:text-3xl text-xl font-bold text-tertiaryColor'>
+            <h2 className='md:text-3xl text-xl font-bold text-brightOrange'>
               GearPro
             </h2>
           </Link>
-          <ul className='hidden md:flex gap-4 lg:gap-6'>
+          <ul className='hidden md:flex  gap-4 lg:gap-6'>
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `py-2.5 font-medium rounded-md  cursor-pointer duration-150 ${
-                    isActive ? 'text-black' : 'text-[#698898]'
+                  `py-2.5 font-medium rounded-md hover:text-brightOrange  cursor-pointer duration-150 ${
+                    isActive
+                      ? 'text-brightOrange'
+                      : location.pathname === '/' && scrollY <= scrollThreshold
+                      ? ' text-white'
+                      : 'text-stone-900'
                   } hover:text-tertiaryColor`
                 }
               >
@@ -70,9 +78,12 @@ const Nav = () => {
               </NavLink>
             ))}
 
-            <Link to='/cart' className='relative py-2.5'>
+            <Link
+              to='/cart'
+              className='relative py-2.5 px-3 border bg-white rounded-full'
+            >
               <Cart />
-              <span className='absolute top-0 -right-3 bg-orange-500 rounded-full py-[3px] px-2 text-xs font-semibold text-white'>
+              <span className='absolute -top-1 -right-2 bg-brightOrange rounded-full py-[.5px] px-[6px] text-[11px]  text-white'>
                 {cart?.items?.length}
               </span>
             </Link>
@@ -88,7 +99,7 @@ const Nav = () => {
 
           {/* Mobile Navigation Menu */}
           <div
-            className={`fixed left-0 top-0 bottom-0 w-full h-screen bg-red-100 z-50 transition-transform duration-500 ${
+            className={`fixed md:hidden left-0 top-0 bottom-0 w-full h-screen bg-offWhite z-50 transition-transform duration-500 ${
               nav ? '-translate-x-0' : 'translate-x-full'
             }`}
           >
@@ -98,15 +109,43 @@ const Nav = () => {
                 onClick={() => setNav(false)}
                 className='flex items-center gap-3'
               >
-                <h2 className='md:text-3xl text-xl lg:text-4xl font-bold text-tertiaryColor'>
-                  Nextgendevs
+                <h2 className='md:text-3xl text-xl font-bold text-brightOrange'>
+                  GearPro
                 </h2>
               </Link>
               <div onClick={handleNav} className='cursor-pointer'>
                 <NavClose />
               </div>
             </div>
-            <ul className='mt-4 flex flex-col items-start text-[13px] sm:text-base'>
+
+            <ul className='  flex flex-col items-start text-[13px] '>
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.to}
+                  onClick={() => setNav(false)}
+                  to={item.to}
+                  className={({ isActive }) =>
+                    `px-4 py-3 text-stone-900 rounded-md cursor-pointer duration-300 leading-[18px] font-semibold ${
+                      isActive ? 'text-black' : 'text-[#698898]'
+                    } `
+                  }
+                >
+                  <li>{item.label}</li>
+                </NavLink>
+              ))}
+
+              <Link
+                to='/cart'
+                onClick={() => setNav(false)}
+                className='relative pl-4 pb-3 pt-1.5 mt-1'
+              >
+                <Cart />
+                <span className='absolute top-0 -right-3 bg-brightOrange rounded-full py-[.5px] px-[5px] text-[10px]  text-white'>
+                  {cart?.items?.length}
+                </span>
+              </Link>
+            </ul>
+            {/* <ul className='mt-4 flex flex-col items-start text-[13px] sm:text-base'>
               <li className='px-4 py-3 text-[#698898] rounded-md cursor-pointer duration-300 hover:text-tertiaryColor leading-[18px] font-semibold'>
                 Courses
               </li>
@@ -127,7 +166,7 @@ const Nav = () => {
                   <Button>Register</Button>
                 </Link>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </Container>

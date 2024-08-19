@@ -77,9 +77,11 @@ export default function Checkout() {
       <PageHeader route='checkout' title='Checkout' />
 
       <Container>
-        <div className='900:flex  justify-between gap-10 pt-20 pb-32'>
+        <div className='900:flex  justify-between gap-10 pt-6 sm:pt-10 900:pt-20 pb-24 900:pb-32'>
           <div className='flex-1 sm:w-[80%] mx-auto '>
-            <h3 className='text-2xl font-semibold mb-6'>Billing details</h3>
+            <h3 className='text-lg md:text-2xl font-semibold mb-6'>
+              Billing details
+            </h3>
             <Form {...form}>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='space-y-6 lg:space-y-8'>
@@ -111,7 +113,9 @@ export default function Checkout() {
             </Form>
           </div>
           <div className='sm:w-[80%] 900:mt-0 mt-16 mx-auto 900:w-[420px] lg:w-[500px]'>
-            <h3 className='text-2xl font-semibold mb-6'>Your Order</h3>
+            <h3 className='text-lg md:text-2xl font-semibold mb-6'>
+              Your Order
+            </h3>
             <div className='900:text-base text-sm bg-white p-6 shadow-l h-max border border-stone-300 rounded-lg'>
               {cartItems.map((item) => (
                 <div
@@ -135,7 +139,7 @@ export default function Checkout() {
                         </p>
                       </div>
                     </div>
-                    <span className='text-orange-500 font-semibold'>
+                    <span className='text-brightOrange font-semibold'>
                       ${item.price * item.quantity}
                     </span>
                   </div>
@@ -147,15 +151,17 @@ export default function Checkout() {
 
               <div className='font-semibold text-sm flex justify-between py-4 border-b border-b-stone-200'>
                 <span>SUBTOTAL</span>
-                <span className='text-orange-500'>${subtotal.toFixed(2)}</span>
+                <span className='text-brightOrange'>
+                  ${subtotal.toFixed(2)}
+                </span>
               </div>
               <div className='font-semibold text-sm flex justify-between py-4 border-b border-b-stone-200'>
                 <span>VAT (15%)</span>
-                <span className='text-orange-500'>${vat.toFixed(2)}</span>
+                <span className='text-brightOrange'>${vat.toFixed(2)}</span>
               </div>
               <div className='font-semibold text-sm flex justify-between py-4 border-b border-b-stone-200 '>
                 <span>TOTAL</span>
-                <span className='text-orange-500'>${total.toFixed(2)}</span>
+                <span className='text-brightOrange'>${total.toFixed(2)}</span>
               </div>
 
               <Accordion
@@ -201,7 +207,7 @@ export default function Checkout() {
                 disabled={
                   selectedValue === 'Stripe payment' || selectedValue === ''
                 }
-                className='mt-10 disabled:cursor-not-allowed disabled:opacity-60 bg-orange-500 w-full rounded-lg p-3 text-white font-semibold'
+                className='mt-10 disabled:cursor-not-allowed disabled:opacity-60 bg-brightOrange w-full rounded-lg p-3 text-white font-semibold'
                 onClick={() => handleSubmit(onSubmit)()}
               >
                 Place order

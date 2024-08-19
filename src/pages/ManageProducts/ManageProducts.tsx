@@ -78,9 +78,9 @@ export default function ManageProducts() {
           </div>
         ) : (
           <>
-            <div className='border border-stone-200 font-semibold rounded-b-none text-stone-800 text-sm rounded-lg py-4 px-10 flex justify-between items-center mt-10 bg-stone-200'>
-              <span className='flex-1 ml-6'>Name</span>
-              <span className='flex-1 text-center'>Price</span>
+            <div className='border border-stone-200 font-semibold rounded-b-none text-stone-800 text-sm rounded-lg py-4 px-6 md:px-10 flex justify-between items-center mt-10 bg-orange-100'>
+              <span className='flex-1 md:ml-6'>Name</span>
+              <span className='flex-1  text-center'>Price</span>
               <span className='flex-1 text-center'>Category</span>
               <span className='flex-1 text-center'>Stock</span>
               <span className='flex-[.5] text-center'>Actions</span>

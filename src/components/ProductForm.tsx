@@ -192,7 +192,15 @@
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -211,6 +219,7 @@ import { Spinner } from './Icons';
 import { toast } from './ui/use-toast';
 import { TProduct } from '@/interface';
 import { Label } from './ui/label';
+import React from 'react';
 
 const productSchema = z.object({
   name: z.string().min(1, 'Name is required!'),
@@ -294,8 +303,6 @@ export function ProductForm({ isUpdate, product, setOpen }: TProductFormProps) {
           )
         ) as Partial<z.infer<typeof productSchema>>;
 
-        console.log(changedValues);
-
         await updateProduct({
           id: product?._id,
           data: { ...changedValues },
@@ -311,7 +318,6 @@ export function ProductForm({ isUpdate, product, setOpen }: TProductFormProps) {
           stock: parseInt(values.stock, 10),
         };
 
-        console.log(data); // Optional: Remove if no longer needed
         await addProduct(data).unwrap();
 
         showToast(true, 'Product added successfully.');
@@ -375,12 +381,49 @@ export function ProductForm({ isUpdate, product, setOpen }: TProductFormProps) {
               />
             </div>
             <div className='flex-1'>
+              {/* <FilterdByCategory
+                category={category}
+                setCategory={setCategory}
+              /> */}
+              <FormField
+                name='category'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <div className='space-y-1.5'>
+                        {isUpdate && <Label htmlFor='category'>Category</Label>}
+                        <Select
+                          value={field.value} // Connect the Select value to the form's field value
+                          onValueChange={field.onChange} // Trigger form's onChange when selecting an option
+                        >
+                          <SelectTrigger className='py-6 placeholder:text-stone-300'>
+                            <SelectValue
+                              placeholder='Category'
+                              className='text-stone-600'
+                            />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectGroup>
+                              <SelectLabel>Categories</SelectLabel>
+                              <SelectItem value='Football'>Football</SelectItem>
+                              <SelectItem value='Cricket'>Cricket</SelectItem>
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            {/* <div className='flex-1'>
               <FormInputFiled
                 isUpdate={isUpdate}
                 placeholder={'Category'}
                 name={'category'}
               />
-            </div>
+            </div> */}
           </div>
           <FormField
             name='description'

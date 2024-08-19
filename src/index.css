@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 ::selection {
-  background-color: #001f33;
+  background-color: #ff4500;
   color: #fff;
 }
 
@@ -108,12 +108,18 @@
   }
 }
 
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
   }
 }
 

@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <div className=' py-10 sm:py-12 md:py-16 lg:py-20 bg-stone-950'>
       <Container>
-        <h2 className='md:text-2xl md:text-left text-center text-xl lg:text-3xl font-bold text-white mb-14'>
+        <h2 className='md:text-2xl md:text-left text-center text-xl lg:text-3xl font-bold text-brightOrange mb-14'>
           GearPro
         </h2>
 
@@ -18,31 +18,16 @@ export default function Footer() {
                 Quick Links
               </p>
               <p className='text-[#A4B5C1] cursor-pointer leading-[22.4px] mb-3'>
-                Course
+                All Products
               </p>
               <p className='text-[#A4B5C1] cursor-pointer leading-[22.4px] mb-3'>
-                Students outcomes
+                Manage Products
               </p>
               <p className='text-[#A4B5C1] cursor-pointer leading-[22.4px] mb-3'>
-                Curriculum
+                Cart
               </p>
               <p className='text-[#A4B5C1] cursor-pointer leading-[22.4px] mb-3'>
-                FAQ
-              </p>
-            </div>
-
-            <div className='flex flex-col items-center md:items-start'>
-              <p className='text-[13px] xs:text-base font-bold text-white mb-4'>
-                Company
-              </p>
-              <p className='text-[#A4B5C1] leading-[22.4px] mb-3'>
-                <Link to='/contact'>Contact</Link>
-              </p>
-              <p className='text-[#A4B5C1] leading-[22.4px] mb-3'>
-                <Link to='/register'>Register</Link>
-              </p>
-              <p className='text-[#A4B5C1] cursor-pointer leading-[22.4px] mb-3'>
-                Testimonials
+                About Us
               </p>
             </div>
           </div>

@@ -106,28 +106,30 @@ const items = [
 
 export default function Categories() {
   return (
-    <Container>
-      {/* {categories.map((category) => (
+    <div className='mb-28'>
+      <Container>
+        {/* {categories.map((category) => (
         <Link key={category} to={`/all-products?category=${category}`}>
           <button>{category}</button>
         </Link>
       ))} */}
 
-      <SectionTitle
-        title='Explore Our Categories'
-        subTitle="Browse our diverse categories to find the perfect gear for every sport, activity, and adventure you're passionate about."
-      />
+        <SectionTitle
+          title='Explore Our Categories'
+          subTitle="Browse our diverse categories to find the perfect gear for every sport, activity, and adventure you're passionate about."
+        />
 
-      <BentoGrid className=''>
-        {items.map((item, i) => (
-          <BentoGridItem
-            key={i}
-            title={item.title}
-            img={item.img}
-            className={i === 3 || i === 6 ? 'md:col-span-2' : ''}
-          />
-        ))}
-      </BentoGrid>
-    </Container>
+        <BentoGrid>
+          {items.map((item, i) => (
+            <BentoGridItem
+              key={i}
+              title={item.title}
+              img={item.img}
+              className={i === 3 || i === 6 ? 'md:col-span-2' : ''}
+            />
+          ))}
+        </BentoGrid>
+      </Container>
+    </div>
   );
 }

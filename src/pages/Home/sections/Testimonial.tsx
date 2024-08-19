@@ -4,38 +4,39 @@ import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards';
 const testimonials = [
   {
     quote:
-      'It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.',
-    name: 'Charles Dickens',
-    title: 'A Tale of Two Cities',
+      'GearPro has everything I need for my outdoor adventures. The quality is top-notch, and the customer service is unbeatable!',
+    name: 'John Doe',
+    title: 'Outdoor Enthusiast',
   },
   {
     quote:
-      "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
-    name: 'William Shakespeare',
-    title: 'Hamlet',
-  },
-  {
-    quote: 'All that we see or seem is but a dream within a dream.',
-    name: 'Edgar Allan Poe',
-    title: 'A Dream Within a Dream',
+      'I’ve purchased all my sports equipment from GearPro. Their selection is fantastic, and I always find what I need at great prices.',
+    name: 'Sarah Williams',
+    title: 'Fitness Coach',
   },
   {
     quote:
-      'It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.',
-    name: 'Jane Austen',
-    title: 'Pride and Prejudice',
+      'As a professional athlete, I rely on GearPro for my gear. Their products are durable, reliable, and always meet my expectations.',
+    name: 'Mike Johnson',
+    title: 'Professional Athlete',
   },
   {
     quote:
-      'Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.',
-    name: 'Herman Melville',
-    title: 'Moby-Dick',
+      'From tennis rackets to running shoes, GearPro has it all. Their easy online shopping experience and fast delivery keep me coming back.',
+    name: 'Emily Davis',
+    title: 'Tennis Player',
+  },
+  {
+    quote:
+      'I’ve been using GearPro for years. The quality of their products and their commitment to customer satisfaction is outstanding.',
+    name: 'David Brown',
+    title: 'Sports Enthusiast',
   },
 ];
 
 export default function Testimonial() {
   return (
-    <div>
+    <div className='bg-orange-100 pb-12 sm:pb-16 md:mb-24 lg:pb-32'>
       <SectionTitle
         title='Voices of Our Customers'
         subTitle='Hear firsthand from our satisfied customers. Their stories and feedback highlight the quality and trust we deliver every day.'

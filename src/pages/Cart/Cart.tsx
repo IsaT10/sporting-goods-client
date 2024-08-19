@@ -23,11 +23,11 @@ const Cart = () => {
           <div className='flex flex-col gap-6 justify-center items-center h-[calc(100vh-300px)]'>
             <p className='text-xl  font-semibold'>No products in the cart.</p>
             <Link to={'/all-products'}>
-              <Button className='bg-orange-500'>Return to shop</Button>
+              <Button className='bg-brightOrange'>Return to shop</Button>
             </Link>
           </div>
         ) : (
-          <div className='md:flex gap-5 lg:gap-10 md:mt-10 lg:mt-20 mb-32'>
+          <div className='md:flex gap-5 lg:gap-10  md:mt-10 lg:mt-20 mb-32'>
             <div className='flex-1 '>
               {cartItems?.map((item) => (
                 <CartItem key={item.id} item={item} />
@@ -40,21 +40,21 @@ const Cart = () => {
                 </h3>
                 <div className='font-semibold  flex justify-between py-4 border-b border-b-stone-200'>
                   <span>SUBTOTAL</span>
-                  <span className='text-orange-500'>
+                  <span className='text-brightOrange'>
                     ${subtotal.toFixed(2)}
                   </span>
                 </div>
                 <div className='font-semibold  flex justify-between py-4 border-b border-b-stone-200 min-h-28'>
                   <span>VAT (15%)</span>
-                  <span className='text-orange-500'>${vat.toFixed(2)}</span>
+                  <span className='text-brightOrange'>${vat.toFixed(2)}</span>
                 </div>
                 <div className='font-semibold  flex justify-between py-4 border-b border-b-stone-200 '>
                   <span>TOTAL</span>
-                  <span className='text-orange-500'>${total.toFixed(2)}</span>
+                  <span className='text-brightOrange'>${total.toFixed(2)}</span>
                 </div>
               </div>
               <button
-                className='mt-10 bg-orange-500 w-full rounded-lg p-3 text-white font-semibold'
+                className='mt-10 bg-brightOrange w-full rounded-lg p-3 text-white font-semibold'
                 onClick={handleProceedToCheckout}
               >
                 Proceed to Checkout

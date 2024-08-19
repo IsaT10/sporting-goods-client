@@ -4,8 +4,9 @@ import { useAppDispatch } from '@/redux/hooks';
 import { removeItem, updateQuantity } from '@/redux/features/cartSlice';
 import { Button } from './ui/button';
 import { toast } from './ui/use-toast';
+import { TCartItem } from '@/interface';
 
-export default function CartItem({ item }) {
+export default function CartItem({ item }: { item: TCartItem }) {
   const [quantity, setQuantity] = React.useState(item.quantity);
   const [isLoading, setIsLoading] = React.useState(false);
   const dispatch = useAppDispatch();
@@ -45,6 +46,7 @@ export default function CartItem({ item }) {
         setIsLoading(false);
         toast({
           title: 'Update cart',
+          description: `Cart item is updated!`,
           variant: 'default',
         });
       }, 1000);
@@ -62,9 +64,14 @@ export default function CartItem({ item }) {
       setIsLoading(true);
       dispatch(updateQuantity({ id: item.id, quantity }));
       setTimeout(() => {
-        setQuantity(quantity + 1);
+        setQuantity(quantity - 1);
         setManualUpdate(false);
         setIsLoading(false);
+        toast({
+          title: 'Update cart',
+          description: `Cart item is updated!`,
+          variant: 'default',
+        });
       }, 1000);
     }
   };
@@ -138,7 +145,7 @@ export default function CartItem({ item }) {
 
       <p className=' flex flex-col gap-2 items-center text-sm font-semibold'>
         <span>SUBTOTAL</span>
-        <span className='text-orange-500'>${item.quantity * item.price}</span>
+        <span className='text-brightOrange'>${item.quantity * item.price}</span>
       </p>
 
       <button onClick={() => handleRemoveItem(item.id)}>
@@ -159,7 +166,7 @@ export default function CartItem({ item }) {
           <span className='font-semibold  text-sm'>Price: ${item.price}</span>
           <p className='text-sm font-semibold'>
             <span>Subtotal: </span>
-            <span className='text-orange-500'>
+            <span className='text-brightOrange'>
               ${(item.quantity * item.price).toFixed(2)}
             </span>
           </p>

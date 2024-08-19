@@ -8,6 +8,9 @@ import { useAppDispatch } from '@/redux/hooks';
 import { addItem } from '@/redux/features/cartSlice';
 import React from 'react';
 import { toast } from '@/components/ui/use-toast';
+import Star from '@/components/Star';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 export default function ProductDetails() {
   const [quantity, setQuantity] = React.useState(1);
@@ -54,7 +57,7 @@ export default function ProductDetails() {
     );
   }
 
-  const { name, price, image, stock, category, brand } = product.data;
+  const { name, rating, price, image, stock, category, brand } = product.data;
 
   const handleAddToCart = () => {
     if (quantity < stock) {
@@ -86,13 +89,24 @@ export default function ProductDetails() {
 
   return (
     <Container>
-      <div className='flex justify-between gap-16 pt-14'>
-        <img className='w-1/2 h-[500px]' src={img} alt={name} />
+      <div className='space-y-9 md:space-y-0 md:flex justify-between gap-10 lg:gap-16 pt-12 pb-20 md:py-24'>
+        <PhotoProvider>
+          <PhotoView src={img}>
+            <img
+              className='md:w-1/2 w-full h-[320px] sm:h-[400px] md:h-[500px] rounded-lg object-cover'
+              src={img}
+              alt={name}
+            />
+          </PhotoView>
+        </PhotoProvider>
 
-        <div className='w-1/2 flex flex-col gap-4 items-start'>
-          <h3 className='font-semibold text-3xl'>{name}</h3>
-          <p className='text-[40px] font-bold text-orange-500'>${price}</p>
-          <p className='text-[15px] leading-6 text-[#838383] font-'>
+        <div className='md:w-1/2 flex flex-col gap-4 items-start'>
+          <h3 className='font-semibold text-2xl 900:text-3xl'>{name}</h3>
+          <p className='sm:text-[34px] 900:text-[40px] font-bold text-[#FF4500]'>
+            ${price}
+          </p>
+          <Star rating={rating} />
+          <p className='text-[15px] leading-6 text-coolGray '>
             Blue running shoes are crafted with premium materials and innovative
             technology to provide unparalleled comfort and support for your
             runs. With a sleek design and vibrant blue color, they’ll add a pop
@@ -101,17 +115,17 @@ export default function ProductDetails() {
           </p>
           <div className='font-semibold'>
             <p>
-              Brand: <span className='text-[#838383] font-normal'>{brand}</span>
+              Brand: <span className='text-coolGray font-normal'>{brand}</span>
             </p>
             <p className='mt-1'>
               Category:{' '}
-              <span className='text-[#838383] font-normal'>{category}</span>
+              <span className='text-coolGray font-normal'>{category}</span>
             </p>
-            <p className='mt-1'>
-              Availability:{' '}
-              <span className='text-[#5f5f5f]'>
+            <p className='mt-1 '>
+              Quantity: <span className='text-coolGray'>{stock}</span>
+              {/* <span className='text-darkGray'>
                 {stock ? 'In stock' : 'Out of stock'}
-              </span>
+              </span> */}
             </p>
           </div>
 
@@ -140,14 +154,14 @@ export default function ProductDetails() {
 
                 <Button
                   onClick={handleAddToCart}
-                  className='bg-orange-500 rounded-lg px-9 py-7 '
+                  className='bg-brightOrange rounded-lg px-9 py-7 '
                 >
                   Add to cart
                 </Button>
               </div>
-              <p className='mt'>
+              <p className='text-stone-700'>
                 Subtotal:{' '}
-                <span className='text-orange-500 font-semibold'>
+                <span className='text-brightOrange font-semibold'>
                   ${price * quantity}
                 </span>
               </p>
