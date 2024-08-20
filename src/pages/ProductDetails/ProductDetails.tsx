@@ -11,12 +11,16 @@ import { toast } from '@/components/ui/use-toast';
 import Star from '@/components/Star';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { useCartItems } from '@/hooks/useCartItems';
 
 export default function ProductDetails() {
   const [quantity, setQuantity] = React.useState(1);
+  const { cartItems } = useCartItems();
 
-  console.log(quantity);
   const { id } = useParams();
+
+  const selectedItem = cartItems?.find((el) => el.id === id);
+  console.log(selectedItem);
   const {
     data: product,
     isLoading,
@@ -60,7 +64,8 @@ export default function ProductDetails() {
   const { name, rating, price, image, stock, category, brand } = product.data;
 
   const handleAddToCart = () => {
-    if (quantity < stock) {
+    const totalQuantityInCart = (selectedItem?.quantity || 0) + quantity;
+    if (totalQuantityInCart <= stock) {
       dispatch(
         addItem({
           id: id!,

@@ -14,6 +14,7 @@ import AllProducts from './pages/AllProducts/AllProducts';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Cart from './pages/Cart/Cart';
 import Checkout from './pages/Checkout/Checkout';
+import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
             <Route path='manage-products' element={<ManageProducts />} />
             <Route path='*' element={<Navigate to='/' />} />
           </Route>
+          <Route path='order-success' element={<OrderSuccess />} />
         </Routes>
       </Router>
     </div>

@@ -94,8 +94,7 @@ export default function ManageProducts() {
           </>
         )}
 
-        {products?.data?.products?.length < 10 &&
-        currentPage !== totalPages ? null : (
+        {products?.data?.products?.length < 10 ? null : (
           <PaginationProducts
             currentPage={currentPage}
             totalPages={totalPages}

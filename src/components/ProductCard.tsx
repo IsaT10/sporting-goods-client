@@ -33,8 +33,17 @@ export default function ProductCard({ product }: { product: TProduct }) {
             {/* <p className='text-yellowGold'>{product.rating} ★</p> */}
             <Star rating={product.rating} />
           </div>
-          <p className='mb-3 text-sm text-stone-600'>
-            Stock quantity: {product.stock}
+          <p className='mt-1 mb-3 text-sm text-stone-600'>
+            {product.stock ? (
+              <span>Stock quantity: {product.stock}</span>
+            ) : (
+              <span
+                className='text-xs px-2 py-1 text-white rounded-md
+              bg-[#bc0101] font-semibold'
+              >
+                Out of stock
+              </span>
+            )}
           </p>
           <p className='text-xl font-bold text-brightOrange'>
             ${product.price}

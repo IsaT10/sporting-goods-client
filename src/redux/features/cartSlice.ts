@@ -26,8 +26,6 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<CartItem>) => {
-      console.log('state', state);
-      console.log('action', action);
       const existingItem = state.items.find(
         (item) => item.id === action.payload.id
       );
@@ -45,6 +43,7 @@ const cartSlice = createSlice({
       localStorage.setItem('cart', JSON.stringify(state.items));
     },
     clearCart: (state) => {
+      state.items = [];
       localStorage.removeItem('cart');
     },
     updateQuantity: (

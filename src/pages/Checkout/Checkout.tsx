@@ -7,7 +7,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Form } from '@/components/ui/form';
-import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/Icons';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import {
@@ -17,6 +16,10 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import React from 'react';
+import { usePlaceOrderMutation } from '@/redux/api/api';
+import { clearCart } from '@/redux/features/cartSlice';
+import { useAppDispatch } from '@/redux/hooks';
+import { useNavigate } from 'react-router-dom';
 
 const billingDetails = z.object({
   name: z.string().min(1, 'Name is required!'),
@@ -31,6 +34,13 @@ const billingDetails = z.object({
 
 export default function Checkout() {
   const { subtotal, vat, total, cartItems } = useCartItems();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const result = cartItems?.map((item) => ({
+    id: item.id,
+    quantity: item.quantity,
+  }));
 
   const defaultValues = {
     name: '',
@@ -67,8 +77,22 @@ export default function Checkout() {
     setSelectedValue(value);
   };
 
-  async function onSubmit(values: z.infer<typeof billingDetails>) {
-    console.log(values);
+  const [orderPlace] = usePlaceOrderMutation();
+
+  async function onSubmit() {
+    try {
+      console.log('first');
+      await orderPlace(result).unwrap();
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      console.log('second');
+
+      dispatch(clearCart());
+
+      navigate('/order-success');
+    } catch (error) {
+      showToast(false, 'Something went very wrong. Please try again later!');
+    }
+
     // Submit your form data to the server or handle it in your app
   }
 
@@ -131,10 +155,10 @@ export default function Checkout() {
                     <div>
                       <p className='font-semibold'>{item.name}</p>
                       <div className='flex gap-4 mt-2'>
-                        <p className='bg-green-400 text-[10px] font-bold text-stone-800 rounded-full px-3 py-0.5'>
+                        <p className='bg-green-400 text-[10px] font-bold text-stone-800 rounded-md px-3'>
                           {item.category}
                         </p>
-                        <p className='bg-purple-400 text-[10px] font-bold text-stone-800 rounded-full px-3 py-0.5'>
+                        <p className='bg-purple-400 text-[10px] font-bold text-stone-800 rounded-md px-3'>
                           {item.brand}
                         </p>
                       </div>
@@ -203,6 +227,7 @@ export default function Checkout() {
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
+
               <button
                 disabled={
                   selectedValue === 'Stripe payment' || selectedValue === ''
@@ -210,7 +235,11 @@ export default function Checkout() {
                 className='mt-10 disabled:cursor-not-allowed disabled:opacity-60 bg-brightOrange w-full rounded-lg p-3 text-white font-semibold'
                 onClick={() => handleSubmit(onSubmit)()}
               >
-                Place order
+                {isSubmitting ? (
+                  <Spinner className='mx-auto h-4 w-4 animate-spin' />
+                ) : (
+                  'Place Order'
+                )}
               </button>
             </div>
           </div>

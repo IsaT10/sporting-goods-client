@@ -4,6 +4,7 @@ import { Cart, NavClose, NavOpen } from '../Icons';
 import { Button } from '../ui/button';
 import Container from '../Container';
 import { useAppSelector } from '@/redux/hooks';
+import { useCartItems } from '@/hooks/useCartItems';
 
 const navItems = [
   { to: '/about-us', label: 'About Us' },
@@ -18,7 +19,7 @@ const Nav = () => {
   const [nav, setNav] = useState(false);
   const location = useLocation();
 
-  const cart = useAppSelector((state) => state.cart);
+  const { cartItems } = useCartItems();
 
   const scrollThreshold = window.innerWidth < 768 ? 150 : 300;
   const handleScroll = () => {
@@ -84,7 +85,7 @@ const Nav = () => {
             >
               <Cart />
               <span className='absolute -top-1 -right-2 bg-brightOrange rounded-full py-[.5px] px-[6px] text-[11px]  text-white'>
-                {cart?.items?.length}
+                {cartItems?.length}
               </span>
             </Link>
           </ul>
@@ -141,7 +142,7 @@ const Nav = () => {
               >
                 <Cart />
                 <span className='absolute top-0 -right-3 bg-brightOrange rounded-full py-[.5px] px-[5px] text-[10px]  text-white'>
-                  {cart?.items?.length}
+                  {cartItems?.length}
                 </span>
               </Link>
             </ul>

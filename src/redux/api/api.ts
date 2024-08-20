@@ -62,6 +62,14 @@ export const baseApi = createApi({
       }),
       invalidatesTags: ['product'],
     }),
+    placeOrder: builder.mutation({
+      query: (data) => ({
+        url: `/carts/place-order`,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['product'],
+    }),
   }),
 });
 
@@ -70,4 +78,5 @@ export const {
   useAddProductMutation,
   useUpdateProductMutation,
   useDeleteProductMutation,
+  usePlaceOrderMutation,
 } = baseApi;
