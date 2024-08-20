@@ -1,6 +1,6 @@
 import Container from '@/components/Container';
 import { useGetProductsQuery } from '@/redux/api/api';
-import img from '../../assets/images/badminton-1.jpg';
+// import img from '../../assets/images/badminton-1.jpg';
 import { useParams } from 'react-router-dom';
 import { Minus, Plus, Spinner } from '@/components/Icons';
 import { Button } from '@/components/ui/button';
@@ -96,10 +96,10 @@ export default function ProductDetails() {
     <Container>
       <div className='space-y-9 md:space-y-0 md:flex justify-between gap-10 lg:gap-16 pt-12 pb-20 md:py-24'>
         <PhotoProvider>
-          <PhotoView src={img}>
+          <PhotoView src={image}>
             <img
               className='md:w-1/2 w-full h-[320px] sm:h-[400px] md:h-[500px] rounded-lg object-cover'
-              src={img}
+              src={image}
               alt={name}
             />
           </PhotoView>

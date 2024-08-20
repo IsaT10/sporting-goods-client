@@ -34,6 +34,7 @@ export const baseApi = createApi({
         }
 
         const url = query.id ? `/products/${query.id}` : '/products';
+        // Poll every 30 seconds
 
         return { url, method: 'GET', params };
       },

@@ -12,6 +12,8 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Star } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { TProduct } from '@/interface';
+import { useGetProductsQuery } from '@/redux/api/api';
 
 type TFiltersProps = {
   searchTerm: string;
@@ -44,6 +46,21 @@ export default function FilterProducts({
     setCategory('all');
     handleResetAll();
   };
+
+  const { data } = useGetProductsQuery({});
+
+  const products = data?.data?.products;
+
+  function getBrandNames(products: TProduct[]) {
+    return products?.map((product: TProduct) => product.brand);
+  }
+  function getCategories(products: TProduct[]) {
+    return products?.map((product: TProduct) => product.category);
+  }
+
+  const brands = getBrandNames(products);
+  const categories = getCategories(products);
+
   return (
     <div className='space-y-6'>
       <div>
@@ -85,13 +102,40 @@ export default function FilterProducts({
             <RadioGroupItem value='all' id='r1' />
             <Label htmlFor='r1'>All</Label>
           </div>
-          <div className='flex items-center space-x-2'>
-            <RadioGroupItem value='Cricket' id='r2' />
-            <Label htmlFor='r2'>Cricket</Label>
-          </div>
+          {/* {categories?.map((el, idx) => (
+            <div key={idx} className='flex items-center space-x-2'>
+              <RadioGroupItem value={el} id={el} />
+              <Label htmlFor={el}>{el}</Label>
+            </div>
+          ))} */}
+
           <div className='flex items-center space-x-2'>
             <RadioGroupItem value='Football' id='r3' />
             <Label htmlFor='r3'>Football</Label>
+          </div>
+          <div className='flex items-center space-x-2'>
+            <RadioGroupItem value='Cycling' id='r4' />
+            <Label htmlFor='r4'>Cycling</Label>
+          </div>
+          <div className='flex items-center space-x-2'>
+            <RadioGroupItem value='Running' id='r5' />
+            <Label htmlFor='r5'>Running</Label>
+          </div>
+          <div className='flex items-center space-x-2'>
+            <RadioGroupItem value='Gymnastic' id='r6' />
+            <Label htmlFor='r6'>Gymnastic</Label>
+          </div>
+          <div className='flex items-center space-x-2'>
+            <RadioGroupItem value='Basketball' id='r10' />
+            <Label htmlFor='r10'>Basketball</Label>
+          </div>
+          <div className='flex items-center space-x-2'>
+            <RadioGroupItem value='Tennis' id='r8' />
+            <Label htmlFor='r8'>Tennis</Label>
+          </div>
+          <div className='flex items-center space-x-2'>
+            <RadioGroupItem value='Baseball' id='r9' />
+            <Label htmlFor='r9'>Baseball</Label>
           </div>
         </RadioGroup>
       </div>
@@ -106,14 +150,21 @@ export default function FilterProducts({
             <RadioGroupItem value='all' id='r1' />
             <Label htmlFor='r1'>All</Label>
           </div>
-          <div className='flex items-center space-x-2'>
+          {brands?.map((el, idx) => (
+            <div key={idx} className='flex items-center space-x-2'>
+              <RadioGroupItem value={el} id={el} />
+              <Label htmlFor={el}>{el}</Label>
+            </div>
+          ))}
+
+          {/* <div className='flex items-center space-x-2'>
             <RadioGroupItem value='Nike' id='r2' />
             <Label htmlFor='r2'>Nike</Label>
           </div>
           <div className='flex items-center space-x-2'>
             <RadioGroupItem value='SS' id='r3' />
             <Label htmlFor='r3'>SS</Label>
-          </div>
+          </div> */}
         </RadioGroup>
       </div>
 

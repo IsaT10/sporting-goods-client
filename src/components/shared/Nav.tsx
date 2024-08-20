@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Cart, NavClose, NavOpen } from '../Icons';
-import { Button } from '../ui/button';
 import Container from '../Container';
-import { useAppSelector } from '@/redux/hooks';
 import { useCartItems } from '@/hooks/useCartItems';
 
 const navItems = [

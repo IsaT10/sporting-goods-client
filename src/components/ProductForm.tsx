@@ -406,7 +406,16 @@ export function ProductForm({ isUpdate, product, setOpen }: TProductFormProps) {
                             <SelectGroup>
                               <SelectLabel>Categories</SelectLabel>
                               <SelectItem value='Football'>Football</SelectItem>
-                              <SelectItem value='Cricket'>Cricket</SelectItem>
+                              <SelectItem value='Baseball'>Baseball</SelectItem>
+                              <SelectItem value='Basketball'>
+                                Basketball
+                              </SelectItem>
+                              <SelectItem value='Cycling'>Cycling</SelectItem>
+                              <SelectItem value='Badminton'>
+                                Badminton
+                              </SelectItem>
+                              <SelectItem value='Running'>Running</SelectItem>
+                              <SelectItem value='Tennis'>Tennis</SelectItem>
                             </SelectGroup>
                           </SelectContent>
                         </Select>

@@ -170,10 +170,11 @@ export default function AllProducts() {
           </div>
 
           {!products?.data?.products?.length ? (
-            <div className='h-[70vh] flex justify-center items-center '>
-              <p className='text-stone-700 text-xl font-semibold'>
-                No results found for your search criteria.
-              </p>
+            <div className='h-[70vh] flex flex-col justify-center text-stone-800 text-xl font-semibold  items-center '>
+              <span>Sorry, no results were found.</span>
+              <span>
+                Try adjusting your search, filters, or sorting options.
+              </span>
               {/* <p>Try adjusting your filters or search terms.</p> */}
             </div>
           ) : (

@@ -3,10 +3,11 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css/pagination';
 import { Button } from '@/components/ui/button';
 import BlurImage from '@/components/BlurImage';
-import img1 from '../../../assets/images/alfred-kenneally-XqFeVprJ3jQ-unsplash.jpg';
+import img1 from '../../../assets/images/banner.jpeg';
 import img2 from '../../../assets/images/braden-collum-9HI8UJMSdZA-unsplash.jpg';
 import img3 from '../../../assets/images/discount.jpg';
 import './Hero.css';
+import Container from '@/components/Container';
 
 export default function Hero() {
   return (
@@ -21,7 +22,7 @@ export default function Hero() {
       modules={[Autoplay, Pagination]}
     >
       <SwiperSlide>
-        <div className=' flex items-center justify-end -pt-20'>
+        <div className='  items-center justify-end -pt-20'>
           <div className='relative  w-full h-[70vh] md:h-[80vh] lg:h-screen'>
             <BlurImage
               src={img1}
@@ -31,22 +32,24 @@ export default function Hero() {
             <div className='absolute  inset-0 bg-gradient-to-b  from-[#0000007a] to-[#00000087]'></div>
           </div>
 
-          <div className='absolute px-4 mt-[5%] sm:px-14 lg:w-1/2 text-white'>
-            <h1 className='text-[32px] leading-9 sm:text-3xl md:text-5xl lg:text-6xl font-bold  md:leading-[55px] lg:leading-[65px] w-[70%] lg:w-[80%] tracking-tight mb-2 xs:mb-4'>
-              Score Big in Cricket
-            </h1>
+          <Container>
+            <div className='absolute top-1/2 -translate-y-[75%]  mt-[5%] lg:w-[40%] text-white'>
+              <h1 className='text-[32px] leading-9 sm:text-3xl md:text-5xl lg:text-6xl font-bold  md:leading-[55px] lg:leading-[65px] w-[70%] lg:w-[80%] tracking-tight mb-2 xs:mb-4'>
+                Score Big in Cricket
+              </h1>
 
-            <p className='text-[13px] w-[90%] sm:w-[90%]   sm:text-lg  md:leading-[25px] text-stone-200 mb-6 sm:mb-10 '>
-              Equip yourself with top-quality cricket gear and elevate your game
-              to new heights. Discover the best equipment for champions
-            </p>
+              <p className='text-[13px] w-[90%] sm:w-[90%]   sm:text-lg  md:leading-[25px] text-stone-200 mb-6 sm:mb-10 '>
+                Equip yourself with top-quality cricket gear and elevate your
+                game to new heights. Discover the best equipment for champions
+              </p>
 
-            {/* <div className='hidden md:flex gap-4  '>
+              {/* <div className='hidden md:flex gap-4  '>
               <Button className={'whitespace-nowrap'}>Learn&nbsp;more</Button>
 
               <Button className='px-8'>Our Course</Button>
             </div> */}
-          </div>
+            </div>
+          </Container>
         </div>
       </SwiperSlide>
       <SwiperSlide>
