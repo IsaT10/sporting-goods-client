@@ -7,7 +7,7 @@ export default function TeamMemberCard({ ...el }) {
           src={el.image}
           alt=''
         />
-        <div className='absolute inset-0 bg-gradient-to-t from-gray-700 via-[#44444431] to-transparent pointer-events-none'></div>
+        <div className='absolute inset-0 bg-gradient-to-t from-[#000000] via-[#00000061] to-transparent pointer-events-none'></div>
       </div>
       <div className='absolute bottom-5 left-5'>
         <h5 className='font-bold text-white text-xl'>{el.name}</h5>

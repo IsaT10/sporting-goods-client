@@ -1,194 +1,3 @@
-// import { z } from 'zod';
-// import { useForm } from 'react-hook-form';
-// import { zodResolver } from '@hookform/resolvers/zod';
-
-// import { Button } from '@/components/ui/button';
-// import {
-//   Form,
-//   FormControl,
-//   FormField,
-//   FormItem,
-//   FormMessage,
-// } from '@/components/ui/form';
-// import { Textarea } from './ui/textarea';
-// import FormInputFiled from './FormInputFiled';
-// import { DialogClose } from './ui/dialog';
-// import { useAddProductMutation } from '@/redux/api/api';
-// import { useState } from 'react';
-// import { compareObjects } from '@/utils/compareObject';
-
-// const productSchema = z.object({
-//   name: z.string({ required_error: 'Name is required' }),
-//   description: z.string({ required_error: 'Description is required' }),
-//   brand: z.string({ required_error: 'brand is required' }),
-//   rating: z.string({ required_error: 'rating is required' }),
-//   price: z.string({ required_error: 'price is required' }),
-//   stock: z.string({ required_error: 'stock is required' }),
-//   category: z.string({ required_error: 'category is required' }),
-//   image: z.string({ required_error: 'image is required' }),
-// });
-
-// export function ProductForm({ isUpdate = false, product }) {
-//   const productDetails = {
-//     ...product,
-//     rating: product?.rating.toString(),
-//     price: product?.price.toString(),
-//     stock: product?.stock.toString(),
-//   };
-//   //   const defaultValues = {
-//   //     name: product ? product.name : 'SS Ton Gladiator',
-//   //     description: product
-//   //       ? product.description
-//   //       : 'SS Ton Gladiator is known for its powerful hitting and high-quality willow.',
-//   //     brand: product ? product.brand : 'SS',
-//   //     rating: product ? product.rating : '4.6',
-//   //     price: product ? product.price : '340.89',
-//   //     stock: product ? product.stock : '23',
-//   //     category: product ? product.category : '668cbbc541aed87cd71b6253',
-//   //     image: product
-//   //       ? product.image
-//   //       : 'https://example.com/images/ss-ton-gladiator.jpg',
-//   //   };
-
-//   const defaultValues = {
-//     name: productDetails ? productDetails.name : '',
-//     description: productDetails ? productDetails.description : '',
-//     brand: productDetails ? productDetails.brand : '',
-//     rating: productDetails ? productDetails.rating : '',
-//     price: productDetails ? productDetails.price : '',
-//     stock: productDetails ? productDetails.stock : '',
-//     category: productDetails ? productDetails.category : '',
-//     image: productDetails ? productDetails.image : '',
-//   };
-
-//   const form = useForm({
-//     resolver: zodResolver(productSchema),
-//     defaultValues: {
-//       ...defaultValues,
-//     },
-//   });
-
-//   const {
-//     watch,
-//     formState: { isValid },
-//   } = form;
-
-//   /* const { fields, append } = useFieldArray({
-//     name: "urls",
-//     control: form.control,
-//   }) */
-
-//   const initialValues: z.infer<typeof productSchema> = watch();
-//   const [addProduct, { error }] = useAddProductMutation();
-
-//   function onSubmit(values: z.infer<typeof productSchema>) {
-//     const changedValues: Partial<z.infer<typeof productSchema>> = {};
-
-//     // console.log('Submitted values:', values);
-
-//     for (const key in values) {
-//       if (values[key] !== productDetails[key]) {
-//         changedValues[key] = values[key];
-//       }
-//     }
-
-//     console.log('Changed values:', changedValues);
-//     // const changedProperties = compareObjects(values, product);
-//     // console.log(changedProperties);
-
-//     if (isUpdate) {
-//       console.log(changedValues);
-//       //   updateProduct({ id: product._id, ...changedValues }); // Assuming updateProduct accepts an object with id and changed values
-//     } else {
-//       console.log(values);
-//       const data = {
-//         ...values,
-//         price: parseFloat(values.price),
-//         rating: parseFloat(values.rating),
-//         stock: parseFloat(values.stock),
-//       };
-//       addProduct(data);
-//       console.log(data);
-//     }
-//   }
-
-//   return (
-//     <Form {...form}>
-//       <form onSubmit={form.handleSubmit(onSubmit)}>
-//         <div className='space-y-8'>
-//           <div className='flex gap-6 '>
-//             <div className='flex-1'>
-//               <FormInputFiled placeholder={'Name'} name={'name'} />
-//             </div>
-//             <div className='flex-1'>
-//               <FormInputFiled placeholder={'Brand'} name={'brand'} />
-//             </div>
-//           </div>
-
-//           <div className='flex gap-6 '>
-//             <div className='flex-1'>
-//               <FormInputFiled placeholder={'Price'} name={'price'} />
-//             </div>
-//             <div className='flex-1'>
-//               <FormInputFiled placeholder={'Image Link'} name={'image'} />
-//             </div>
-//           </div>
-
-//           <div className='flex gap-6 '>
-//             <div className='flex-1'>
-//               <FormInputFiled placeholder={'Stock'} name={'stock'} />
-//             </div>
-//             <div className='flex-1'>
-//               <FormInputFiled placeholder={'Category'} name={'category'} />
-//             </div>
-//           </div>
-//           <div className='flex gap-6 '>
-//             <div className='flex-1'>
-//               <FormInputFiled placeholder={'Rating'} name={'rating'} />
-//             </div>
-//             <div className='flex-1'>
-//               <FormInputFiled
-//                 placeholder={'Description'}
-//                 name={'description'}
-//               />
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* <FormField
-//           control={form.control}
-//           name='message'
-//           render={({ field }) => (
-//             <FormItem>
-//               <FormControl>
-//                 <Textarea
-//                   placeholder='Message'
-//                   className='resize-none'
-//                   {...field}
-//                 />
-//               </FormControl>
-
-//               <FormMessage />
-//             </FormItem>
-//           )}
-//         /> */}
-//         {isValid ? (
-//           <DialogClose
-//             type='submit'
-//             className='w-full bg-primary py-3 mt-8 text-white font-semibold rounded-lg'
-//           >
-//             <span>Submit</span>
-//           </DialogClose>
-//         ) : (
-//           <Button className='w-full bg-primary py-3 mt-8 text-white font-semibold rounded-lg'>
-//             Submit
-//           </Button>
-//         )}
-//       </form>
-//     </Form>
-//   );
-// }
-
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -244,20 +53,6 @@ export function ProductForm({ isUpdate, product, setOpen }: TProductFormProps) {
     price: product?.price.toString(),
     stock: product?.stock.toString(),
   };
-  //   const defaultValues = {
-  //     name: product ? product.name : 'SS Ton Gladiator',
-  //     description: product
-  //       ? product.description
-  //       : 'SS Ton Gladiator is known for its powerful hitting and high-quality willow.',
-  //     brand: product ? product.brand : 'SS',
-  //     // rating: product ? product.rating : '4.6',
-  //     price: product ? product.price : '340.89',
-  //     stock: product ? product.stock : '23',
-  //     category: product ? product.category : 'Cricket',
-  //     image: product
-  //       ? product.image
-  //       : 'https://example.com/images/ss-ton-gladiator.jpg',
-  //   };
 
   const defaultValues = {
     name: productDetails?.name || '',
@@ -381,10 +176,6 @@ export function ProductForm({ isUpdate, product, setOpen }: TProductFormProps) {
               />
             </div>
             <div className='flex-1'>
-              {/* <FilterdByCategory
-                category={category}
-                setCategory={setCategory}
-              /> */}
               <FormField
                 name='category'
                 render={({ field }) => (
@@ -426,13 +217,6 @@ export function ProductForm({ isUpdate, product, setOpen }: TProductFormProps) {
                 )}
               />
             </div>
-            {/* <div className='flex-1'>
-              <FormInputFiled
-                isUpdate={isUpdate}
-                placeholder={'Category'}
-                name={'category'}
-              />
-            </div> */}
           </div>
           <FormField
             name='description'

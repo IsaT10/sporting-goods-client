@@ -20,7 +20,6 @@ export default function ProductDetails() {
   const { id } = useParams();
 
   const selectedItem = cartItems?.find((el) => el.id === id);
-  console.log(selectedItem);
   const {
     data: product,
     isLoading,
@@ -63,8 +62,8 @@ export default function ProductDetails() {
 
   const { name, rating, price, image, stock, category, brand } = product.data;
 
+  const totalQuantityInCart = (selectedItem?.quantity || 0) + quantity;
   const handleAddToCart = () => {
-    const totalQuantityInCart = (selectedItem?.quantity || 0) + quantity;
     if (totalQuantityInCart <= stock) {
       dispatch(
         addItem({
@@ -80,7 +79,7 @@ export default function ProductDetails() {
       );
       toast({
         title: 'Success',
-        description: `${name} is added to cart`,
+        description: `Product added to cart`,
         variant: 'default',
       });
     } else {
@@ -136,7 +135,6 @@ export default function ProductDetails() {
 
           {stock ? (
             <>
-              {' '}
               <div className='flex  items-center gap-5 mt-5'>
                 <div className='flex items-center gap-6 p-4 rounded-lg border border-stone-200'>
                   <button
@@ -159,6 +157,7 @@ export default function ProductDetails() {
 
                 <Button
                   onClick={handleAddToCart}
+                  disabled={totalQuantityInCart >= stock}
                   className='bg-brightOrange rounded-lg px-9 py-7 '
                 >
                   Add to cart

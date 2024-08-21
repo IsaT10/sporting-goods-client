@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Facebook, Instagram, LinkedIn, WhatsApp } from '../Icons';
 import Container from '../Container';
 

@@ -1,21 +1,19 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css/pagination';
-import { Button } from '@/components/ui/button';
 import BlurImage from '@/components/BlurImage';
-import img1 from '../../../assets/images/banner.jpeg';
-import img2 from '../../../assets/images/braden-collum-9HI8UJMSdZA-unsplash.jpg';
-import img3 from '../../../assets/images/discount.jpg';
+
 import './Hero.css';
 import Container from '@/components/Container';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
     <Swiper
-      // autoplay={{
-      //   delay: 2000,
-      //   disableOnInteraction: false,
-      // }}
+      autoplay={{
+        delay: 2000,
+        disableOnInteraction: false,
+      }}
       pagination={{
         clickable: true,
       }}
@@ -23,160 +21,95 @@ export default function Hero() {
     >
       <SwiperSlide>
         <div className='  items-center justify-end -pt-20'>
-          <div className='relative  w-full h-[70vh] md:h-[80vh] lg:h-screen'>
+          <div className='relative  w-full h-[70vh] md:h-[90vh] lg:h-screen'>
             <BlurImage
-              src={img1}
+              src='https://i.ibb.co/pLZrRTk/banner2.jpg'
               blurHash={'OSMG@kNbkWRPNdxu%M00yDxuMxozj[of_N%MWVjZofWVf6'}
               className='w-full h-full object-cover'
             />
-            <div className='absolute  inset-0 bg-gradient-to-b  from-[#0000007a] to-[#00000087]'></div>
+            <div className='absolute  inset-0 bg-gradient-to-br  from-[#000000c1] to-[#00000087]'></div>
           </div>
 
           <Container>
-            <div className='absolute top-1/2 -translate-y-[75%]  mt-[5%] lg:w-[40%] text-white'>
-              <h1 className='text-[32px] leading-9 sm:text-3xl md:text-5xl lg:text-6xl font-bold  md:leading-[55px] lg:leading-[65px] w-[70%] lg:w-[80%] tracking-tight mb-2 xs:mb-4'>
-                Score Big in Cricket
+            <div className='absolute top-1/2 -translate-y-1/2 lg:-translate-y-[60%] xl:-translate-y-[75%]  mt-[5%]   text-white'>
+              <h1 className='text-[26px] leading-[30px] sm:eading-9 sm:text-3xl md:text-4xl 900:text-5xl lg:text-6xl font-bold md:leading-[45px] 900:leading-[55px] lg:leading-[70px] w-[65%] sm:w-[55%] md:w-[45%] 900:w-[60%] tracking-tight mb-4 xs:mb-4'>
+                Let's Level Up <br /> Your Game
               </h1>
 
-              <p className='text-[13px] w-[90%] sm:w-[90%]   sm:text-lg  md:leading-[25px] text-stone-200 mb-6 sm:mb-10 '>
-                Equip yourself with top-quality cricket gear and elevate your
-                game to new heights. Discover the best equipment for champions
+              <p className='text-xs md:text-base w-[80%] sm:w-[75%] md:w-[60%]   sm:text-lg  md:leading-[25px] text-stone-200 mb-6 sm:mb-10 '>
+                Browse our selection of expertly crafted sporting goods designed
+                to enhance your skills and support your athletic ambitions.
               </p>
 
-              {/* <div className='hidden md:flex gap-4  '>
-              <Button className={'whitespace-nowrap'}>Learn&nbsp;more</Button>
-
-              <Button className='px-8'>Our Course</Button>
-            </div> */}
+              <Link
+                to='/all-products'
+                className='px-4 sm:px-6 md:px-8 py-2 900:py-3 text-xs md:text-sm border-2 border-brightOrange mr-6 rounded-md text-white font-semibold bg-brightOrange hover:bg-brightOrange/90 duration-200'
+              >
+                Shop Now
+              </Link>
+              <Link
+                to='/about-us'
+                className='px-4 sm:px-6 md:px-8 py-2 900:py-3 text-xs md:text-sm border-2 border-brightOrange  rounded-md text-brightOrange font-semibold hover:text-white  duration-200'
+              >
+                About Us
+              </Link>
             </div>
           </Container>
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className=' flex items-center justify-end rounded-md'>
-          <div className='relative  w-full h-[70vh] md:h-[80vh] lg:h-screen'>
+        <div className='  items-center justify-end rounded-md'>
+          <div className='relative  w-full h-[70vh] md:h-[90vh] lg:h-screen'>
             <BlurImage
-              src={img2}
+              src='https://i.ibb.co/jwbSsWf/banner1.jpg'
               blurHash={'OSMG@kNbkWRPNdxu%M00yDxuMxozj[of_N%MWVjZofWVf6'}
               className='w-full h-full object-cover '
             />
-            <div className='absolute  inset-0 bg-gradient-to-b  from-[#0000007a] to-[#00000087]'></div>
+            <div className='absolute  inset-0 bg-gradient-to-r  from-[#000000dc] to-[#00000087]'></div>
           </div>
 
-          <div className='absolute mt-[5%] w-1/2 text-white'>
-            <h1 className='text-[32px] leading-9 sm:text-3xl md:text-5xl lg:text-6xl font-bold  md:leading-[55px] lg:leading-[65px] w-[70%] lg:w-[80%] tracking-tight mb-2 xs:mb-4'>
-              Conquer the Roads with Running
-            </h1>
+          <Container>
+            <div className='absolute top-1/2 -translate-y-1/2 lg:-translate-y-[60%] xl:-translate-y-[75%]  mt-[5%]   text-white'>
+              <h1 className='text-[26px] leading-9 sm:text-3xl md:text-5xl lg:text-6xl font-bold   md:leading-[45px] 900:leading-[55px] lg:leading-[70px] w-[70%] sm:w-[40%]  md:w-[60%] tracking-tight mb-2 xs:mb-4'>
+                Conquer the Roads with Running
+              </h1>
 
-            <p className='text-[13px] w-[90%] sm:w-[95%] lg:w-[90%]   sm:text-lg  md:leading-[25px] text-stone-200 mb-6 sm:mb-10 '>
-              Discover our top-quality collection of running essentials for
-              every athlete. Elevate your performance and achieve your goals
-            </p>
+              <p className='text-xs md:text-base w-[75%] md:w-[60%]   sm:text-lg  md:leading-[25px] text-stone-200 mb-6 sm:mb-10 '>
+                Discover our top-quality collection of running essentials for
+                every athlete. Elevate your performance and achieve your goals.
+              </p>
 
-            {/* <div className='flex gap-4  '>
-              <Button className={'whitespace-nowrap'}>Learn&nbsp;more</Button>
-
-              <Button className='px-8'>Our Course</Button>
-            </div> */}
-          </div>
+              <Link
+                to='/all-products'
+                className='px-4 sm:px-6 md:px-8 py-2 900:py-3 text-xs md:text-sm border-2 border-brightOrange mr-6 rounded-md text-white font-semibold bg-brightOrange hover:bg-brightOrange/90 duration-200'
+              >
+                Shop Now
+              </Link>
+              <Link
+                to='/about-us'
+                className='px-4 sm:px-6 md:px-8 py-2 900:py-3 text-xs md:text-sm border-2 border-brightOrange  rounded-md text-brightOrange font-semibold hover:text-white  duration-200'
+              >
+                About Us
+              </Link>
+            </div>
+          </Container>
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className=' flex items-center justify-end'>
-          <div className='relative'>
+        <div className='  items-center justify-end'>
+          <div className='relative bg-black'>
             <img
-              className='w-full object-center object-cover h-[70vh] md:h-[80vh] lg:h-screen'
-              src={img3}
+              className='mx-auto object-cover h-[70vh] md:h-[90vh] lg:h-screen'
+              src='https://i.ibb.co/v1Y3Sc4/banner-3.png'
               alt=''
             />
-            <div className='absolute  inset-0 bg-gradient-to-b  from-[#00000049] to-[#00000087]'></div>
           </div>
 
-          {/* <div className='absolute w-1/2 translate-x-1/2 bottom-24'>
-            <Button className='absolute  '>Shop now</Button>
+          {/* <div className=' '>
+            <Button className='absolute top-1  '>Shop now</Button>
           </div> */}
         </div>
       </SwiperSlide>
     </Swiper>
   );
-}
-
-{
-  /* <SwiperSlide>
-<div className=' flex items-center justify-end'>
-  <div className='relative  w-full h-[280px] xs:h-[350px] sm:h-[450px] md:h-[650px] 2xl:h-[800px]'>
-    <BlurImage
-      src={img1}
-      blurHash={'OSMG@kNbkWRPNdxu%M00yDxuMxozj[of_N%MWVjZofWVf6'}
-      className='w-full h-full object-cover rounded-lg'
-      radius={'6px'}
-    />
-    <div className='absolute rounded-lg inset-0 bg-gradient-to-b  from-[#0000007a] to-[#00000087]'></div>
-  </div>
-
-  <div className='absolute w-1/2 text-white'>
-    <h1 className='text-[32px] leading-9 sm:text-3xl md:text-5xl lg:text-6xl font-bold  md:leading-[55px] lg:leading-[65px] w-[70%] lg:w-[80%] tracking-tight mb-2 xs:mb-4'>
-      Score Big in Cricket
-    </h1>
-
-    <p className='text-[13px] w-[90%] sm:w-[95%] lg:w-[90%]   sm:text-lg  md:leading-[25px] text-stone-200 mb-6 sm:mb-10 '>
-      Equip yourself with top-quality cricket gear and elevate your game
-      to new heights. Discover the best equipment for champions
-    </p>
-
-    <div className='hidden md:flex gap-4  '>
-      <Button className={'whitespace-nowrap'}>Learn&nbsp;more</Button>
-
-      <Button className='px-8'>Our Course</Button>
-    </div>
-  </div>
-</div>
-</SwiperSlide>
-<SwiperSlide>
-<div className=' flex items-center justify-end rounded-md'>
-  <div className='relative  w-full h-[280px] xs:h-[350px] sm:h-[450px] md:h-[650px] 2xl:h-[800px]'>
-    <BlurImage
-      src={img2}
-      blurHash={'OSMG@kNbkWRPNdxu%M00yDxuMxozj[of_N%MWVjZofWVf6'}
-      className='w-full h-full object-cover rounded-lg'
-      radius={'6px'}
-    />
-    <div className='absolute rounded-lg inset-0 bg-gradient-to-b  from-[#0000007a] to-[#00000087]'></div>
-  </div>
-
-  <div className='absolute w-1/2 text-white'>
-    <h1 className='text-[32px] leading-9 sm:text-3xl md:text-5xl lg:text-6xl font-bold  md:leading-[55px] lg:leading-[65px] w-[70%] lg:w-[80%] tracking-tight mb-2 xs:mb-4'>
-      Conquer the Roads with Running
-    </h1>
-
-    <p className='text-[13px] w-[90%] sm:w-[95%] lg:w-[90%]   sm:text-lg  md:leading-[25px] text-stone-200 mb-6 sm:mb-10 '>
-      Discover our top-quality collection of running essentials for
-      every athlete. Elevate your performance and achieve your goals
-    </p>
-
-    <div className='flex gap-4  '>
-      <Button className={'whitespace-nowrap'}>Learn&nbsp;more</Button>
-
-      <Button className='px-8'>Our Course</Button>
-    </div>
-  </div>
-</div>
-</SwiperSlide>
-<SwiperSlide>
-<div className=' flex items-center justify-end rounded-md'>
-  <div className='relative'>
-    <img
-      className=' w-full h-[280px] xs:h-[350px] sm:h-[450px] md:h-[650px] 2xl:h-[800px] rounded-lg'
-      src={img3}
-      alt=''
-    />
-    <div className='absolute rounded-lg inset-0 bg-gradient-to-b  from-[#00000049] to-[#00000087]'></div>
-  </div>
-
-  <div className='absolute w-1/2 translate-x-1/2 bottom-24'>
-    <Button className='absolute  '>Shop now</Button>
-  </div>
-</div>
-</SwiperSlide>
-</Swiper> */
 }

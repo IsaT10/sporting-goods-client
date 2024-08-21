@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 export const Checkbox = ({ color = '#335B6C' }) => (
   <svg
     width='20'
@@ -34,36 +33,6 @@ export const Qoutes = () => (
     <path
       d='M25.2133 15.5067H18.96C19.0666 9.28 20.2933 8.25334 24.12 5.98667C24.56 5.72 24.7066 5.16 24.44 4.70667C24.1733 4.26667 23.6133 4.12 23.16 4.38667C18.6533 7.05334 17.08 8.68 17.08 16.44V23.6267C17.08 25.9067 18.9333 27.7467 21.2 27.7467H25.2C27.5466 27.7467 29.32 25.9733 29.32 23.6267V19.6267C29.3333 17.28 27.56 15.5067 25.2133 15.5067Z'
       fill='#335B6C'
-    />
-  </svg>
-);
-
-// export const Plus = ({ className }) => (
-//   <svg
-//     className={className}
-//     viewBox='0 0 32 32'
-//     fill='none'
-//     xmlns='http://www.w3.org/2000/svg'
-//   >
-//     <circle cx='16' cy='16' r='16' fill='#335B6C' />
-//     <path
-//       d='M16.5 15.5V12H15.5V15.5H12V16.5H15.5V20H16.5V16.5H20V15.5H16.5Z'
-//       fill='white'
-//     />
-//   </svg>
-// );
-
-export const Cross = ({ className }) => (
-  <svg
-    className={className}
-    viewBox='0 0 32 32'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-  >
-    <circle cx='16' cy='16' r='16' fill='#335B6C' />
-    <path
-      d='M20 12.8057L19.1943 12L16 15.1943L12.8057 12L12 12.8057L15.1943 16L12 19.1943L12.8057 20L16 16.8057L19.1943 20L20 19.1943L16.8057 16L20 12.8057Z'
-      fill='white'
     />
   </svg>
 );
@@ -245,26 +214,11 @@ export const NavOpen = () => (
   >
     <path
       d='M12 14H28V16H12V14ZM12 19H28V21H12V19ZM12 24H28V26H12V24Z'
-      fill='#001F33'
+      fill='#FFF'
     />
   </svg>
 );
-export const DownArrow = ({ className }) => (
-  <svg
-    xmlns='http://www.w3.org/2000/svg'
-    fill='none'
-    viewBox='0 0 24 24'
-    strokeWidth='1.5'
-    stroke='currentColor'
-    className={className}
-  >
-    <path
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      d='m19.5 8.25-7.5 7.5-7.5-7.5'
-    />
-  </svg>
-);
+
 export const Filter = () => (
   <svg
     stroke='currentColor'
@@ -324,7 +278,7 @@ export const Minus = () => (
     <path strokeLinecap='round' strokeLinejoin='round' d='M5 12h14' />
   </svg>
 );
-export const Cart = ({}) => (
+export const Cart = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     fill='none'
@@ -337,6 +291,60 @@ export const Cart = ({}) => (
       strokeLinecap='round'
       strokeLinejoin='round'
       d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z'
+    />
+  </svg>
+);
+
+export const Message = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    fill='none'
+    viewBox='0 0 24 24'
+    strokeWidth='2'
+    stroke='#FF4500'
+    className='size-5'
+  >
+    <path
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      d='M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75'
+    />
+  </svg>
+);
+export const Phone = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    fill='none'
+    viewBox='0 0 24 24'
+    strokeWidth='2'
+    stroke='#FF4500'
+    className='size-5'
+  >
+    <path
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      d='M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3'
+    />
+  </svg>
+);
+export const Location = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    fill='none'
+    viewBox='0 0 24 24'
+    strokeWidth='2'
+    stroke='#FF4500'
+    className='w-[22px] h-[22px]'
+  >
+    <path
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      d='M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z'
+    />
+    <path
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      d='M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z'
     />
   </svg>
 );

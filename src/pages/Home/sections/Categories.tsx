@@ -1,42 +1,35 @@
 import Container from '@/components/Container';
 import SectionTitle from '@/components/SectionTitle';
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
-import badminton2 from '../../../assets/images/badminton-2.jpg';
-import football2 from '../../../assets/images/football-2.jpg';
-import basketball9 from '../../../assets/images/basketball-9.jpg';
-import tennis1 from '../../../assets/images/tennis-1.jpg';
-import running1 from '../../../assets/images/braden-collum-9HI8UJMSdZA-unsplash.jpg';
-import baseball2 from '../../../assets/images/baseball-2.jpg';
-import cycling1 from '../../../assets/images/cycling-1.jpg';
 
 const items = [
   {
     title: 'Football',
-    img: football2,
+    img: 'https://i.ibb.co/LttjLmc/football-2.jpg',
   },
   {
     title: 'Baseball',
-    img: baseball2,
+    img: 'https://i.ibb.co/6sTz9qt/baseball-2.jpg',
   },
   {
     title: 'Cycling',
-    img: cycling1,
+    img: 'https://i.ibb.co/Y0rZ4Rc/cycling-1.jpg',
   },
   {
     title: 'Basketball',
-    img: basketball9,
+    img: 'https://i.ibb.co/SJKYz05/basketball-9.jpg',
   },
   {
     title: 'Running',
-    img: running1,
+    img: 'https://i.ibb.co/jwbSsWf/banner1.jpg',
   },
   {
     title: 'Tennis',
-    img: tennis1,
+    img: 'https://i.ibb.co/NVP3S7w/tennis-1.jpg',
   },
   {
     title: 'Badminton',
-    img: badminton2,
+    img: 'https://i.ibb.co/RgXpDxd/badminton-2.jpg',
   },
 ];
 
@@ -44,12 +37,6 @@ export default function Categories() {
   return (
     <div className='mb-28'>
       <Container>
-        {/* {categories.map((category) => (
-        <Link key={category} to={`/all-products?category=${category}`}>
-          <button>{category}</button>
-        </Link>
-      ))} */}
-
         <SectionTitle
           title='Explore Our Categories'
           subTitle="Browse our diverse categories to find the perfect gear for every sport, activity, and adventure you're passionate about."

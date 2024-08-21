@@ -104,53 +104,6 @@ export default function CartItem({ item }: { item: TCartItem }) {
 
   return (
     <div className='flex py-10 lg:py-5 border-b border-b-stone-300 gap-5 items-start'>
-      {/* <div className='flex gap-6 items-center'>
-        <img className='w-32 h-28 object-cover' src={item.image} alt='' />
-        <div className='flex flex-col gap-2'>
-          <span className=' font-semibold'>{item.name}</span>
-          <div className='flex gap-4 '>
-            <p className='bg-green-400 text-xs font-bold text-stone-800 rounded-full px-2 py-0.5'>
-              {item.category}
-            </p>
-            <p className='bg-purple-400 text-xs font-bold text-stone-800 rounded-full px-2 py-0.5'>
-              {item.brand}
-            </p>
-          </div>
-          <span className='font-semibold text-stone-500 text-sm'>
-            Price: ${item.price}
-          </span>
-        </div>
-      </div>
-      <div className='flex items-center gap-5 px-4 py-2.5 text-sm rounded-full border border-stone-200'>
-        <button onClick={handleDecrease}>
-          <Minus />
-        </button>
-        <input
-          className='w-5 outline-none'
-          type='text'
-          value={quantity}
-          onChange={handleInputChange}
-        />
-        <button onClick={handleIncrease}>
-          <Plus />
-        </button>
-      </div>
-      <button
-        className='bg-stone-800 px-6 flex items-center gap-2 text-white font-semibold py-2'
-        onClick={handleUpdateCart}
-        disabled={isLoading}
-      >
-        <span>Update cart</span> {isLoading && <Spinner className='h-3 w-3' />}
-      </button>
-
-      <p className=' flex flex-col gap-2 items-center text-sm font-semibold'>
-        <span>SUBTOTAL</span>
-        <span className='text-brightOrange'>${item.quantity * item.price}</span>
-      </p>
-
-      <button onClick={() => handleRemoveItem(item.id)}>
-        <Remove />
-      </button> */}
       <img className='w-32 h-28 object-cover' src={item.image} alt='' />
       <div>
         <div className='flex flex-col gap-3'>

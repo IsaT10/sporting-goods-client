@@ -10,7 +10,10 @@ export default function LatestProducts() {
     data: products,
     isLoading,
     error,
-  } = useGetProductsQuery({ limit: 3, sort: '-createdAt' });
+  } = useGetProductsQuery(
+    { limit: 3, sort: '-createdAt' },
+    { pollingInterval: 30000 }
+  );
 
   if (isLoading)
     return (
@@ -35,7 +38,7 @@ export default function LatestProducts() {
           title='New Arrivals'
           subTitle='Stay updated with our newest arrivals. Discover the freshest gear and latest trends to elevate your performance and style.'
         />
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 lg:gap-8 gap-y-12 '>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 md:gap-x-4 lg:gap-x-8 gap-y-14 '>
           {products?.data?.products?.map((el: TProduct, idx: number) => (
             <ProductCard key={idx} product={el} />
           ))}

@@ -1,7 +1,5 @@
-import { StarHalf, StarHalfIcon } from 'lucide-react';
-
-const Star = ({ rating }) => {
-  const ratingStar = Array.from({ length: 5 }, (elem, index) => {
+const Star = ({ rating }: { rating: number }) => {
+  const ratingStar = Array.from({ length: 5 }, (__, index) => {
     const number = index + 0.5;
 
     return (

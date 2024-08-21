@@ -42,6 +42,8 @@ export default function FilterProducts({
   setByRating,
   handleResetAll,
 }: TFiltersProps) {
+  const [showAll, setShowAll] = React.useState(false);
+  const [showAllBrand, setShowAllBrand] = React.useState(false);
   const handleResetAllFilters = () => {
     setCategory('all');
     handleResetAll();
@@ -51,15 +53,28 @@ export default function FilterProducts({
 
   const products = data?.data?.products;
 
-  function getBrandNames(products: TProduct[]) {
-    return products?.map((product: TProduct) => product.brand);
+  function getCategories(products: TProduct[]): string[] {
+    return products?.reduce((uniqueCategories: string[], product: TProduct) => {
+      if (uniqueCategories.indexOf(product.category) === -1) {
+        uniqueCategories.push(product.category);
+      }
+      return uniqueCategories;
+    }, []);
   }
-  function getCategories(products: TProduct[]) {
-    return products?.map((product: TProduct) => product.category);
+  function getBrands(products: TProduct[]): string[] {
+    return products?.reduce((uniqueBrands: string[], product: TProduct) => {
+      if (uniqueBrands.indexOf(product.brand) === -1) {
+        uniqueBrands.push(product.brand);
+      }
+      return uniqueBrands;
+    }, []);
   }
 
-  const brands = getBrandNames(products);
+  const brands = getBrands(products);
   const categories = getCategories(products);
+
+  const visibleCategories = showAll ? categories : categories?.slice(0, 5);
+  const visibleBrands = showAll ? brands : brands?.slice(0, 5);
 
   return (
     <div className='space-y-6'>
@@ -102,43 +117,25 @@ export default function FilterProducts({
             <RadioGroupItem value='all' id='r1' />
             <Label htmlFor='r1'>All</Label>
           </div>
-          {/* {categories?.map((el, idx) => (
+          {visibleCategories?.map((el, idx) => (
             <div key={idx} className='flex items-center space-x-2'>
               <RadioGroupItem value={el} id={el} />
               <Label htmlFor={el}>{el}</Label>
             </div>
-          ))} */}
-
-          <div className='flex items-center space-x-2'>
-            <RadioGroupItem value='Football' id='r3' />
-            <Label htmlFor='r3'>Football</Label>
-          </div>
-          <div className='flex items-center space-x-2'>
-            <RadioGroupItem value='Cycling' id='r4' />
-            <Label htmlFor='r4'>Cycling</Label>
-          </div>
-          <div className='flex items-center space-x-2'>
-            <RadioGroupItem value='Running' id='r5' />
-            <Label htmlFor='r5'>Running</Label>
-          </div>
-          <div className='flex items-center space-x-2'>
-            <RadioGroupItem value='Gymnastic' id='r6' />
-            <Label htmlFor='r6'>Gymnastic</Label>
-          </div>
-          <div className='flex items-center space-x-2'>
-            <RadioGroupItem value='Basketball' id='r10' />
-            <Label htmlFor='r10'>Basketball</Label>
-          </div>
-          <div className='flex items-center space-x-2'>
-            <RadioGroupItem value='Tennis' id='r8' />
-            <Label htmlFor='r8'>Tennis</Label>
-          </div>
-          <div className='flex items-center space-x-2'>
-            <RadioGroupItem value='Baseball' id='r9' />
-            <Label htmlFor='r9'>Baseball</Label>
-          </div>
+          ))}
         </RadioGroup>
+        {categories?.length >= 5 ? (
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className={`mt-4 ml-6 text-sm font-semibold text-brightOrange `}
+          >
+            {showAll ? 'Less Category' : 'More Category'}
+          </button>
+        ) : (
+          ''
+        )}
       </div>
+
       <div>
         <p className='font-semibold text-lg mb-4 '>Brands</p>
         <RadioGroup
@@ -150,22 +147,23 @@ export default function FilterProducts({
             <RadioGroupItem value='all' id='r1' />
             <Label htmlFor='r1'>All</Label>
           </div>
-          {brands?.map((el, idx) => (
+          {visibleBrands?.map((el, idx) => (
             <div key={idx} className='flex items-center space-x-2'>
               <RadioGroupItem value={el} id={el} />
               <Label htmlFor={el}>{el}</Label>
             </div>
           ))}
-
-          {/* <div className='flex items-center space-x-2'>
-            <RadioGroupItem value='Nike' id='r2' />
-            <Label htmlFor='r2'>Nike</Label>
-          </div>
-          <div className='flex items-center space-x-2'>
-            <RadioGroupItem value='SS' id='r3' />
-            <Label htmlFor='r3'>SS</Label>
-          </div> */}
         </RadioGroup>
+        {brands?.length >= 5 ? (
+          <button
+            onClick={() => setShowAllBrand(!showAllBrand)}
+            className={`mt-4 ml-6 text-sm font-semibold text-brightOrange `}
+          >
+            {showAllBrand ? 'Less Brand' : 'More Brand'}
+          </button>
+        ) : (
+          ''
+        )}
       </div>
 
       <div>

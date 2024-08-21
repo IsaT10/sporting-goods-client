@@ -65,7 +65,7 @@ export const baseApi = createApi({
     }),
     placeOrder: builder.mutation({
       query: (data) => ({
-        url: `/carts/place-order`,
+        url: `/products/place-order`,
         method: 'POST',
         body: data,
       }),

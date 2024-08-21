@@ -37,16 +37,7 @@ export function ContactForm() {
     },
   });
 
-  //   const { isSubmitting } = form.formState;
-
-  /* const { fields, append } = useFieldArray({
-    name: "urls",
-    control: form.control,
-  }) */
-
-  function onSubmit(values: z.infer<typeof contactSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+  function onSubmit() {
     setTimeout(() => {
       // Show a success toast after the delay
       toast({
@@ -54,7 +45,7 @@ export function ContactForm() {
         description: 'Form submit succesfully',
         variant: 'default',
       });
-    }, 1000);
+    }, 500);
 
     form.reset();
   }

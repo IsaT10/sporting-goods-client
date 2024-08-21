@@ -1,40 +1,42 @@
 import Container from '@/components/Container';
 import { Link } from 'react-router-dom';
-import ContactUs from './sections/ContactUs';
 import Map from './sections/Map';
-import img from '../../assets/images/badminton-1.jpg';
-import teamMember1 from '../../assets/images/download (3).jpeg';
-import teamMember2 from '../../assets/images/download (4).jpeg';
-import teamMember3 from '../../assets/images/download (5).jpeg';
 import HeaderTitle from '@/components/HeaderTitle';
 import TeamMemberCard from '@/components/TeamMemberCard';
-import { Facebook, Instagram, LinkedIn, WhatsApp } from '@/components/Icons';
-import PageHeader from '@/components/PageHeader';
+import {
+  Facebook,
+  Instagram,
+  LinkedIn,
+  Location,
+  Message,
+  Phone,
+  WhatsApp,
+} from '@/components/Icons';
 
 const teamMembers = [
   {
     id: 1,
     name: 'Son',
     role: 'Product Manager',
-    image: teamMember1, // Replace with the actual image URL
+    image: 'https://i.ibb.co/VVxjmbg/pexels-stefanstefancik-91227-1.jpg',
   },
   {
     id: 2,
     name: 'Steve',
     role: 'Inventory Manager',
-    image: teamMember2, // Replace with the actual image URL
+    image: 'https://i.ibb.co/W5mbzM6/pexels-olly-846741-1.jpg',
   },
   {
     id: 3,
     name: 'Jhon',
     role: 'Content Writer',
-    image: teamMember3, // Replace with the actual image URL
+    image: 'https://i.ibb.co/LnS2cFv/pexels-danxavier-1212984-1.jpg',
   },
   {
     id: 4,
     name: 'William',
     role: 'Sales Analyst',
-    image: teamMember2, // Replace with the actual image URL
+    image: 'https://i.ibb.co/xJvkRm8/pexels-spencer-selover-142259-428333.jpg',
   },
 ];
 
@@ -67,8 +69,8 @@ export default function AboutUs() {
           </div>
           <img
             className='hidden md:inline-block w-[60%] lg:h-[500px] absolute right-0 -top-24 lg:-top-36 rounded-md'
-            src={img}
-            alt=''
+            src='https://i.ibb.co/NVP3S7w/tennis-1.jpg'
+            alt='tennis'
           />
         </div>
 
@@ -102,20 +104,20 @@ export default function AboutUs() {
               <HeaderTitle title='Contact Info and Location' />
               <div className='flex flex-col h-[85%] justify-between'>
                 <div className='lg:text-base text-sm font-semibold space-y-4'>
-                  <p>
-                    Address:{' '}
+                  <p className='flex items-center gap-1.5'>
+                    <Location />
                     <span className='text-stone-600 font-normal'>
                       8644 103rd Ave, Ozone Park, NY 11417
                     </span>
                   </p>
-                  <p>
-                    Phone Number:{' '}
+                  <p className='flex items-center gap-1.5'>
+                    <Phone />
                     <span className='text-stone-600 font-normal'>
                       +1 (555) 123-4567
                     </span>
                   </p>
-                  <p>
-                    Email:{' '}
+                  <p className='flex items-center gap-1.5'>
+                    <Message />
                     <span className='text-stone-600 font-normal'>
                       contact@gearpro.com
                     </span>

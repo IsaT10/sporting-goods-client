@@ -64,7 +64,7 @@ const Nav = () => {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `py-2.5 font-medium rounded-md hover:text-brightOrange  cursor-pointer duration-150 ${
+                  `py-2.5 font-medium rounded-md text-sm 900:text-base hover:text-brightOrange  cursor-pointer duration-150 ${
                     isActive
                       ? 'text-brightOrange'
                       : location.pathname === '/' && scrollY <= scrollThreshold

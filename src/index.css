@@ -7,33 +7,9 @@
   color: #fff;
 }
 
-/* @font-face {
-  font-family: 'Regular';
-  font-weight: 400;
-  src: local('Gilroy-Regular'), url(.) format('truetype');
-}
-
-@font-face {
-  font-family: 'Bold';
-  font-weight: 700;
-  src: local('Gilroy-Bold'), url(.) format('truetype');
-}
-
-@font-face {
-  font-family: 'ExtraBold';
-  font-weight: 800;
-  src: local('Gilroy-ExtraBold'), url(.) format('truetype');
-}
-
-@font-face {
-  font-family: 'Medium';
-  font-weight: 500;
-  src: local('Gilroy-Medium'), url() format('truetype');
-} */
-
 @font-face {
   font-family: 'Normal';
-  font-weight: 600;
+  font-weight: 500;
   src: local('Helvetica-Normal'),
     url(./assets/fonts/Helvetica.ttf) format('truetype');
 }
